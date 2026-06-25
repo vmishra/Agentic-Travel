@@ -7,6 +7,7 @@ requires-python = ">=3.11"
 license = { text = "Apache-2.0" }
 authors = [{ name = "Vikas Mishra" }]
 dependencies = [
+    "mcp>=1.12",
     "pydantic>=2.7,<3",
     "pydantic-settings>=2.3,<3",
 ]
@@ -17,6 +18,7 @@ dev = [
     "pytest-cov>=5.0",
     "ruff>=0.5",
     "mypy>=1.10",
+    "pytest-asyncio>=0.23",
 ]
 
 [build-system]
@@ -38,6 +40,7 @@ packages = ["src/agentic_travel"]
 pythonpath = ["src"]
 testpaths = ["tests"]
 addopts = "-q"
+asyncio_mode = "auto"
 
 [tool.ruff]
 line-length = 100
