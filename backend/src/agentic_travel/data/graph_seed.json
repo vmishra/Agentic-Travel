@@ -1,0 +1,42 @@
+{
+  "regions": [
+    { "id": "reg_south_asia", "name": "South Asia" },
+    { "id": "reg_middle_east", "name": "Middle East" }
+  ],
+  "countries": [
+    { "id": "ctry_in", "name": "India", "region_id": "reg_south_asia", "iso_code": "IN" },
+    { "id": "ctry_lk", "name": "Sri Lanka", "region_id": "reg_south_asia", "iso_code": "LK" },
+    { "id": "ctry_ae", "name": "United Arab Emirates", "region_id": "reg_middle_east", "iso_code": "AE" }
+  ],
+  "cities": [
+    { "id": "city_bom", "name": "Mumbai", "country_id": "ctry_in", "location": { "lat": 19.0760, "lng": 72.8777 }, "timezone": "Asia/Kolkata" },
+    { "id": "city_goi", "name": "Goa", "country_id": "ctry_in", "location": { "lat": 15.2993, "lng": 74.1240 }, "timezone": "Asia/Kolkata" },
+    { "id": "city_cmb", "name": "Colombo", "country_id": "ctry_lk", "location": { "lat": 6.9271, "lng": 79.8612 }, "timezone": "Asia/Colombo" },
+    { "id": "city_dxb", "name": "Dubai", "country_id": "ctry_ae", "location": { "lat": 25.2048, "lng": 55.2708 }, "timezone": "Asia/Dubai" }
+  ],
+  "pois": [
+    { "id": "poi_gateway_of_india", "name": "Gateway of India", "city_id": "city_bom", "location": { "lat": 18.9220, "lng": 72.8347 }, "category": "landmark", "typical_visit_minutes": 60, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.6, "opening_hours": { "opens": "06:00", "closes": "22:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["iconic", "waterfront"] },
+    { "id": "poi_marine_drive", "name": "Marine Drive", "city_id": "city_bom", "location": { "lat": 18.9438, "lng": 72.8231 }, "category": "landmark", "typical_visit_minutes": 45, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.5, "opening_hours": { "opens": "00:00", "closes": "23:59", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["promenade", "sunset"] },
+    { "id": "poi_baga_beach", "name": "Baga Beach", "city_id": "city_goi", "location": { "lat": 15.5553, "lng": 73.7517 }, "category": "beach", "typical_visit_minutes": 120, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.3, "opening_hours": { "opens": "06:00", "closes": "20:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["beach", "nightlife"] },
+    { "id": "poi_basilica_bom_jesus", "name": "Basilica of Bom Jesus", "city_id": "city_goi", "location": { "lat": 15.5009, "lng": 73.9116 }, "category": "religious", "typical_visit_minutes": 60, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.6, "opening_hours": { "opens": "09:00", "closes": "18:30", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["heritage", "unesco"] },
+    { "id": "poi_galle_face_green", "name": "Galle Face Green", "city_id": "city_cmb", "location": { "lat": 6.9244, "lng": 79.8438 }, "category": "landmark", "typical_visit_minutes": 60, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.3, "opening_hours": { "opens": "05:00", "closes": "22:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["oceanfront", "street-food"] },
+    { "id": "poi_burj_khalifa", "name": "Burj Khalifa", "city_id": "city_dxb", "location": { "lat": 25.1972, "lng": 55.2744 }, "category": "landmark", "typical_visit_minutes": 90, "ticket_price": { "amount": "169", "currency": "AED" }, "rating": 4.7, "opening_hours": { "opens": "09:00", "closes": "23:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["skyscraper", "observation-deck"] }
+  ],
+  "edges": [
+    { "source_id": "reg_south_asia", "target_id": "ctry_in", "kind": "contains" },
+    { "source_id": "reg_south_asia", "target_id": "ctry_lk", "kind": "contains" },
+    { "source_id": "reg_middle_east", "target_id": "ctry_ae", "kind": "contains" },
+    { "source_id": "ctry_in", "target_id": "city_bom", "kind": "contains" },
+    { "source_id": "ctry_in", "target_id": "city_goi", "kind": "contains" },
+    { "source_id": "ctry_lk", "target_id": "city_cmb", "kind": "contains" },
+    { "source_id": "ctry_ae", "target_id": "city_dxb", "kind": "contains" },
+    { "source_id": "city_bom", "target_id": "poi_gateway_of_india", "kind": "contains" },
+    { "source_id": "city_bom", "target_id": "poi_marine_drive", "kind": "contains" },
+    { "source_id": "city_goi", "target_id": "poi_baga_beach", "kind": "contains" },
+    { "source_id": "city_goi", "target_id": "poi_basilica_bom_jesus", "kind": "contains" },
+    { "source_id": "city_cmb", "target_id": "poi_galle_face_green", "kind": "contains" },
+    { "source_id": "city_dxb", "target_id": "poi_burj_khalifa", "kind": "contains" },
+    { "source_id": "city_bom", "target_id": "city_goi", "kind": "connected_by", "distance_km": 590.0, "mode": "flight", "duration_minutes": 90 },
+    { "source_id": "city_bom", "target_id": "city_dxb", "kind": "connected_by", "distance_km": 1930.0, "mode": "flight", "duration_minutes": 195 }
+  ]
+}
