@@ -1,0 +1,76 @@
+{
+  "personas": [
+    {
+      "profile": {
+        "traveler_id": "tr_arjun",
+        "display_name": "Arjun Mehta",
+        "home_city_id": "city_bom",
+        "passport_country": "IN",
+        "food_preference": "vegetarian",
+        "budget_tier": "premium",
+        "loyalty_programs": ["Marriott Bonvoy", "Vistara Club"],
+        "visited_city_ids": ["city_dxb", "city_goi"],
+        "interests": ["history", "food", "architecture"]
+      },
+      "session": {
+        "traveler_id": "tr_arjun",
+        "recent_searches": ["weekend in Goa", "Dubai with family"],
+        "current_trip_notes": ["Anniversary trip", "Prefers boutique stays"]
+      }
+    },
+    {
+      "profile": {
+        "traveler_id": "tr_meera",
+        "display_name": "Meera Nair",
+        "home_city_id": "city_cmb",
+        "passport_country": "IN",
+        "food_preference": "vegan",
+        "budget_tier": "mid_range",
+        "loyalty_programs": ["IndiGo BluChip"],
+        "visited_city_ids": ["city_bom"],
+        "interests": ["beaches", "wellness", "nature"]
+      },
+      "session": {
+        "traveler_id": "tr_meera",
+        "recent_searches": ["yoga retreat Goa"],
+        "current_trip_notes": ["Solo traveler", "Wants quiet beaches"]
+      }
+    },
+    {
+      "profile": {
+        "traveler_id": "tr_rohan",
+        "display_name": "Rohan Kapoor",
+        "home_city_id": "city_dxb",
+        "passport_country": "IN",
+        "food_preference": "halal",
+        "budget_tier": "luxury",
+        "loyalty_programs": ["Emirates Skywards", "Taj InnerCircle"],
+        "visited_city_ids": ["city_bom", "city_goi", "city_dxb"],
+        "interests": ["nightlife", "fine dining", "shopping"]
+      },
+      "session": {
+        "traveler_id": "tr_rohan",
+        "recent_searches": ["luxury Maldives", "Mumbai fine dining"],
+        "current_trip_notes": ["Group of 4 friends", "No early mornings"]
+      }
+    },
+    {
+      "profile": {
+        "traveler_id": "tr_kabir",
+        "display_name": "Kabir Sharma",
+        "home_city_id": "city_goi",
+        "passport_country": "IN",
+        "food_preference": "none",
+        "budget_tier": "budget",
+        "loyalty_programs": [],
+        "visited_city_ids": ["city_bom", "city_dxb"],
+        "interests": ["adventure", "live music", "backpacking"]
+      },
+      "session": {
+        "traveler_id": "tr_kabir",
+        "recent_searches": ["cheap flights Mumbai", "hostels in Colombo"],
+        "current_trip_notes": ["Backpacking with one friend", "Flexible dates"]
+      }
+    }
+  ]
+}
