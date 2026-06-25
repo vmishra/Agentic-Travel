@@ -1,0 +1,72 @@
+{
+  "cities": [
+    {
+      "city_id": "city_bom",
+      "months": [
+        { "city_id": "city_bom", "month": 1, "season": "winter", "avg_high_c": 31, "avg_low_c": 17, "rain_probability": 0.01, "advisory": "Pleasant and dry; the best time to visit Mumbai.", "is_recommended": true },
+        { "city_id": "city_bom", "month": 2, "season": "winter", "avg_high_c": 32, "avg_low_c": 19, "rain_probability": 0.01, "advisory": "Warm, dry days and comfortable evenings.", "is_recommended": true },
+        { "city_id": "city_bom", "month": 3, "season": "shoulder", "avg_high_c": 33, "avg_low_c": 22, "rain_probability": 0.02, "advisory": "Warming up but still comfortable for sightseeing.", "is_recommended": true },
+        { "city_id": "city_bom", "month": 4, "season": "summer", "avg_high_c": 33, "avg_low_c": 25, "rain_probability": 0.03, "advisory": "Hot and increasingly humid.", "is_recommended": true },
+        { "city_id": "city_bom", "month": 5, "season": "summer", "avg_high_c": 34, "avg_low_c": 27, "rain_probability": 0.08, "advisory": "Very hot and humid in the pre-monsoon build-up.", "is_recommended": false },
+        { "city_id": "city_bom", "month": 6, "season": "monsoon", "avg_high_c": 32, "avg_low_c": 26, "rain_probability": 0.70, "advisory": "Monsoon onset brings heavy rain.", "is_recommended": false },
+        { "city_id": "city_bom", "month": 7, "season": "monsoon", "avg_high_c": 30, "avg_low_c": 25, "rain_probability": 0.90, "advisory": "Peak monsoon; localized flooding is common.", "is_recommended": false },
+        { "city_id": "city_bom", "month": 8, "season": "monsoon", "avg_high_c": 30, "avg_low_c": 25, "rain_probability": 0.85, "advisory": "Heavy monsoon rains continue.", "is_recommended": false },
+        { "city_id": "city_bom", "month": 9, "season": "monsoon", "avg_high_c": 31, "avg_low_c": 25, "rain_probability": 0.60, "advisory": "Retreating monsoon; rain eases through the month.", "is_recommended": false },
+        { "city_id": "city_bom", "month": 10, "season": "shoulder", "avg_high_c": 34, "avg_low_c": 24, "rain_probability": 0.15, "advisory": "Humid but clearing; shoulder season.", "is_recommended": true },
+        { "city_id": "city_bom", "month": 11, "season": "winter", "avg_high_c": 34, "avg_low_c": 22, "rain_probability": 0.03, "advisory": "Dry and pleasant as cooler weather returns.", "is_recommended": true },
+        { "city_id": "city_bom", "month": 12, "season": "winter", "avg_high_c": 32, "avg_low_c": 19, "rain_probability": 0.01, "advisory": "Cool, dry, and festive; excellent time to visit.", "is_recommended": true }
+      ]
+    },
+    {
+      "city_id": "city_goi",
+      "months": [
+        { "city_id": "city_goi", "month": 1, "season": "winter", "avg_high_c": 32, "avg_low_c": 21, "rain_probability": 0.02, "advisory": "Peak season: warm, dry, ideal for beaches.", "is_recommended": true },
+        { "city_id": "city_goi", "month": 2, "season": "winter", "avg_high_c": 32, "avg_low_c": 21, "rain_probability": 0.01, "advisory": "Dry, sunny, and perfect for the coast.", "is_recommended": true },
+        { "city_id": "city_goi", "month": 3, "season": "shoulder", "avg_high_c": 33, "avg_low_c": 23, "rain_probability": 0.02, "advisory": "Hotter but still excellent beach weather.", "is_recommended": true },
+        { "city_id": "city_goi", "month": 4, "season": "summer", "avg_high_c": 33, "avg_low_c": 26, "rain_probability": 0.05, "advisory": "Hot and humid; quieter, cheaper beaches.", "is_recommended": true },
+        { "city_id": "city_goi", "month": 5, "season": "summer", "avg_high_c": 33, "avg_low_c": 27, "rain_probability": 0.12, "advisory": "Very hot and humid ahead of the monsoon.", "is_recommended": false },
+        { "city_id": "city_goi", "month": 6, "season": "monsoon", "avg_high_c": 30, "avg_low_c": 25, "rain_probability": 0.75, "advisory": "Monsoon arrives with heavy downpours.", "is_recommended": false },
+        { "city_id": "city_goi", "month": 7, "season": "monsoon", "avg_high_c": 29, "avg_low_c": 24, "rain_probability": 0.85, "advisory": "Heavy monsoon rains; many beach shacks closed.", "is_recommended": false },
+        { "city_id": "city_goi", "month": 8, "season": "monsoon", "avg_high_c": 29, "avg_low_c": 24, "rain_probability": 0.80, "advisory": "Lush and wet; water sports suspended.", "is_recommended": false },
+        { "city_id": "city_goi", "month": 9, "season": "monsoon", "avg_high_c": 30, "avg_low_c": 24, "rain_probability": 0.55, "advisory": "Monsoon retreats; rain becomes intermittent.", "is_recommended": false },
+        { "city_id": "city_goi", "month": 10, "season": "shoulder", "avg_high_c": 32, "avg_low_c": 24, "rain_probability": 0.18, "advisory": "Beaches reopen as the season begins.", "is_recommended": true },
+        { "city_id": "city_goi", "month": 11, "season": "winter", "avg_high_c": 33, "avg_low_c": 22, "rain_probability": 0.04, "advisory": "Warm, dry, and lively; great time to visit.", "is_recommended": true },
+        { "city_id": "city_goi", "month": 12, "season": "winter", "avg_high_c": 33, "avg_low_c": 21, "rain_probability": 0.02, "advisory": "Peak festive season; book early.", "is_recommended": true }
+      ]
+    },
+    {
+      "city_id": "city_cmb",
+      "months": [
+        { "city_id": "city_cmb", "month": 1, "season": "shoulder", "avg_high_c": 31, "avg_low_c": 23, "rain_probability": 0.05, "advisory": "Dry and pleasant; a good time to visit.", "is_recommended": true },
+        { "city_id": "city_cmb", "month": 2, "season": "shoulder", "avg_high_c": 31, "avg_low_c": 23, "rain_probability": 0.04, "advisory": "Sunny and dry along the west coast.", "is_recommended": true },
+        { "city_id": "city_cmb", "month": 3, "season": "shoulder", "avg_high_c": 32, "avg_low_c": 24, "rain_probability": 0.08, "advisory": "Warm with occasional afternoon showers.", "is_recommended": true },
+        { "city_id": "city_cmb", "month": 4, "season": "shoulder", "avg_high_c": 32, "avg_low_c": 25, "rain_probability": 0.20, "advisory": "Inter-monsoon showers begin.", "is_recommended": true },
+        { "city_id": "city_cmb", "month": 5, "season": "monsoon", "avg_high_c": 31, "avg_low_c": 26, "rain_probability": 0.55, "advisory": "Southwest monsoon brings rain to the west coast.", "is_recommended": false },
+        { "city_id": "city_cmb", "month": 6, "season": "monsoon", "avg_high_c": 30, "avg_low_c": 26, "rain_probability": 0.50, "advisory": "Wet on the west coast; drier in the east.", "is_recommended": false },
+        { "city_id": "city_cmb", "month": 7, "season": "monsoon", "avg_high_c": 30, "avg_low_c": 26, "rain_probability": 0.42, "advisory": "Intermittent monsoon rain; still travelable.", "is_recommended": true },
+        { "city_id": "city_cmb", "month": 8, "season": "monsoon", "avg_high_c": 30, "avg_low_c": 26, "rain_probability": 0.40, "advisory": "Showers ease; pleasant between rains.", "is_recommended": true },
+        { "city_id": "city_cmb", "month": 9, "season": "monsoon", "avg_high_c": 30, "avg_low_c": 25, "rain_probability": 0.45, "advisory": "Late monsoon showers continue.", "is_recommended": false },
+        { "city_id": "city_cmb", "month": 10, "season": "monsoon", "avg_high_c": 30, "avg_low_c": 24, "rain_probability": 0.60, "advisory": "Second inter-monsoon; heaviest rain of the year.", "is_recommended": false },
+        { "city_id": "city_cmb", "month": 11, "season": "shoulder", "avg_high_c": 30, "avg_low_c": 23, "rain_probability": 0.40, "advisory": "Rain tapers off toward month end.", "is_recommended": false },
+        { "city_id": "city_cmb", "month": 12, "season": "winter", "avg_high_c": 31, "avg_low_c": 23, "rain_probability": 0.10, "advisory": "Dry season begins; an excellent time to visit.", "is_recommended": true }
+      ]
+    },
+    {
+      "city_id": "city_dxb",
+      "months": [
+        { "city_id": "city_dxb", "month": 1, "season": "winter", "avg_high_c": 24, "avg_low_c": 14, "rain_probability": 0.05, "advisory": "Mild, sunny days; ideal sightseeing weather.", "is_recommended": true },
+        { "city_id": "city_dxb", "month": 2, "season": "winter", "avg_high_c": 25, "avg_low_c": 15, "rain_probability": 0.04, "advisory": "Pleasant and dry; peak tourist season.", "is_recommended": true },
+        { "city_id": "city_dxb", "month": 3, "season": "shoulder", "avg_high_c": 28, "avg_low_c": 17, "rain_probability": 0.03, "advisory": "Warm and comfortable.", "is_recommended": true },
+        { "city_id": "city_dxb", "month": 4, "season": "shoulder", "avg_high_c": 33, "avg_low_c": 20, "rain_probability": 0.01, "advisory": "Warming quickly; still enjoyable.", "is_recommended": true },
+        { "city_id": "city_dxb", "month": 5, "season": "summer", "avg_high_c": 38, "avg_low_c": 24, "rain_probability": 0.00, "advisory": "Very hot; favor indoor attractions.", "is_recommended": false },
+        { "city_id": "city_dxb", "month": 6, "season": "summer", "avg_high_c": 41, "avg_low_c": 27, "rain_probability": 0.00, "advisory": "Extreme heat; outdoor activity limited.", "is_recommended": false },
+        { "city_id": "city_dxb", "month": 7, "season": "summer", "avg_high_c": 42, "avg_low_c": 29, "rain_probability": 0.00, "advisory": "Peak summer heat and humidity.", "is_recommended": false },
+        { "city_id": "city_dxb", "month": 8, "season": "summer", "avg_high_c": 42, "avg_low_c": 30, "rain_probability": 0.00, "advisory": "Intensely hot; stay indoors midday.", "is_recommended": false },
+        { "city_id": "city_dxb", "month": 9, "season": "summer", "avg_high_c": 40, "avg_low_c": 27, "rain_probability": 0.00, "advisory": "Still very hot but easing.", "is_recommended": false },
+        { "city_id": "city_dxb", "month": 10, "season": "shoulder", "avg_high_c": 36, "avg_low_c": 24, "rain_probability": 0.00, "advisory": "Cooling down; outdoor evenings return.", "is_recommended": true },
+        { "city_id": "city_dxb", "month": 11, "season": "winter", "avg_high_c": 31, "avg_low_c": 20, "rain_probability": 0.02, "advisory": "Warm, dry, and very pleasant.", "is_recommended": true },
+        { "city_id": "city_dxb", "month": 12, "season": "winter", "avg_high_c": 26, "avg_low_c": 16, "rain_probability": 0.05, "advisory": "Peak season; mild and ideal.", "is_recommended": true }
+      ]
+    }
+  ]
+}
