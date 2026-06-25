@@ -5,19 +5,25 @@ from agentic_travel.observability.cost import (
     ModelPrice,
     default_cost_model,
 )
+from agentic_travel.observability.events import SpanEvent
 from agentic_travel.observability.span import (
     Span,
     SpanKind,
     SpanStatus,
     TokenUsage,
 )
+from agentic_travel.observability.tracer import SpanHandle, SpanListener, Tracer
 
 __all__ = [
     "CostModel",
     "ModelPrice",
     "Span",
+    "SpanEvent",
+    "SpanHandle",
     "SpanKind",
+    "SpanListener",
     "SpanStatus",
     "TokenUsage",
+    "Tracer",
     "default_cost_model",
 ]
