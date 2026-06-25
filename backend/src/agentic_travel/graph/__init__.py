@@ -12,6 +12,12 @@ from agentic_travel.graph.models import (
     Region,
     TransportMode,
 )
+from agentic_travel.graph.store import (
+    GraphData,
+    GraphStore,
+    InMemoryGraphStore,
+    load_graph_data,
+)
 
 __all__ = [
     "POI",
@@ -19,9 +25,13 @@ __all__ = [
     "Country",
     "Edge",
     "EdgeKind",
+    "GraphData",
+    "GraphStore",
+    "InMemoryGraphStore",
     "NodeKind",
     "OpeningHours",
     "POICategory",
     "Region",
     "TransportMode",
+    "load_graph_data",
 ]
