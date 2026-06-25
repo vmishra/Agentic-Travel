@@ -30,6 +30,7 @@ packages = ["src/agentic_travel"]
 "src/agentic_travel/data/graph_seed.json" = "agentic_travel/data/graph_seed.json"
 "src/agentic_travel/data/flight_routes.json" = "agentic_travel/data/flight_routes.json"
 "src/agentic_travel/data/hotels.json" = "agentic_travel/data/hotels.json"
+"src/agentic_travel/data/visa_rules.json" = "agentic_travel/data/visa_rules.json"
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

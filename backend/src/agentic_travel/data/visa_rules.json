@@ -1,0 +1,6 @@
+{
+  "rules": [
+    { "passport_country": "IN", "destination_country": "AE", "category": "visa_on_arrival", "processing_days": 0, "fee": { "amount": "0", "currency": "AED" }, "max_stay_days": 14, "notes": "Visa on arrival for Indian nationals holding a valid US visa, UK or Schengen residence; otherwise apply for a pre-arranged e-visa." },
+    { "passport_country": "IN", "destination_country": "LK", "category": "e_visa", "processing_days": 2, "fee": { "amount": "20", "currency": "USD" }, "max_stay_days": 30, "notes": "Electronic Travel Authorization (ETA) must be obtained online before arrival." }
+  ]
+}
