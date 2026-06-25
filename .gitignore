@@ -75,6 +75,9 @@ CLAUDE.md
 AGENTS.md
 .github/copilot-instructions.md
 
+# Local-only planning/execution artifacts (kept out of the public repo)
+planning/
+
 # ──────────────────────────────────────────────────────────────────────────
 # Editors / OS
 # ──────────────────────────────────────────────────────────────────────────
