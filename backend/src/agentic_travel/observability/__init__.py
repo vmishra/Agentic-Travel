@@ -1,5 +1,10 @@
 """Tracing and metering substrate for the agent system."""
 
+from agentic_travel.observability.collector import (
+    TraceCollector,
+    TraceSummary,
+    summarize,
+)
 from agentic_travel.observability.cost import (
     CostModel,
     ModelPrice,
@@ -24,6 +29,9 @@ __all__ = [
     "SpanListener",
     "SpanStatus",
     "TokenUsage",
+    "TraceCollector",
+    "TraceSummary",
     "Tracer",
     "default_cost_model",
+    "summarize",
 ]
