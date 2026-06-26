@@ -67,6 +67,8 @@ def _within_opening_hours(activity: Activity, hours: OpeningHours, weekday: int)
         return False
     opens = _parse_hhmm(hours.opens)
     closes = _parse_hhmm(hours.closes)
+    if closes <= opens:  # "00:00"/overnight close means end of day
+        closes = 24 * 60
     return _minutes(activity.start) >= opens and _minutes(activity.end) <= closes
 
 

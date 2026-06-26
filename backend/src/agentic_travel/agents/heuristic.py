@@ -261,8 +261,15 @@ class HeuristicSynthesizer:
             for poi in remaining
             if (window := _open_window(poi.opening_hours, weekday)) is not None
         ]
-        # Earliest-opening first so the day flows morning to evening.
-        open_today.sort(key=lambda item: (item[1][0], -item[0].rating))
+        # Prefer POIs open on the fewest days (so they land on a day they are
+        # open), then earliest-opening so the day flows morning to evening.
+        open_today.sort(
+            key=lambda item: (
+                len(item[0].opening_hours.days) if item[0].opening_hours else 7,
+                item[1][0],
+                -item[0].rating,
+            )
+        )
 
         activities: list[PlannedActivity] = []
         clock = _DAY_START_MIN
@@ -282,16 +289,20 @@ class HeuristicSynthesizer:
             )
             remaining.remove(poi)
             clock = end + _GAP_MIN
-        # Never leave a day empty while POIs remain: place the best one we can.
+        # Never leave a day empty while POIs remain: place the best one we can,
+        # honouring its opening window so we don't raise a spurious advisory.
         if not activities and remaining:
-            poi = next((p for p, _ in open_today), remaining[0])
+            poi, window = next(
+                ((p, w) for p, w in open_today), (remaining[0], (_DAY_START_MIN, 24 * 60))
+            )
             remaining.remove(poi)
-            fallback_end = _DAY_START_MIN + _VISIT_MIN
+            start = max(_DAY_START_MIN, window[0])
+            end = min(start + _VISIT_MIN, window[1])
             activities.append(
                 PlannedActivity(
                     poi_id=poi.id,
-                    start=time(_DAY_START_MIN // 60, _DAY_START_MIN % 60),
-                    end=time(fallback_end // 60, fallback_end % 60),
+                    start=time(start // 60, start % 60),
+                    end=time(end // 60, end % 60),
                 )
             )
         return activities
