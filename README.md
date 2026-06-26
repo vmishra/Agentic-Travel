@@ -48,8 +48,27 @@ Read the full design: [`docs/design/2026-06-26-agentic-travel-design.md`](docs/d
 
 ## Getting started
 
-Setup instructions will be added as the implementation lands. Configuration is environment-driven;
-see [`.env.example`](.env.example) for every variable (no secrets are committed to this repository).
+The demo runs **with no credentials** — a deterministic heuristic planner stands in
+for the model — and upgrades to live Gemini reasoning when keys are present.
+
+```bash
+# 1. Backend API (http://localhost:8000)
+cd backend
+uv sync --extra dev
+uv run uvicorn agentic_travel.api.app:app --port 8000
+
+# 2. Frontend (http://localhost:3000)
+cd frontend
+npm install
+npm run dev
+```
+
+To enable live model reasoning, maps, imagery, and voice, copy
+[`.env.example`](.env.example) to `backend/.env` and fill in your keys. No secrets
+are committed to this repository.
+
+See [`backend/README.md`](backend/README.md) and [`frontend/README.md`](frontend/README.md)
+for details.
 
 ## License
 
