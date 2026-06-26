@@ -104,7 +104,7 @@ def test_missing_destination_asks_for_clarification() -> None:
     )
     result = _coordinator(fake).plan_itinerary("I want to travel somewhere", traveler_id="tr_arjun")
     assert result.itinerary is None
-    assert "destination" in result.brief.clarifications_needed
+    assert any("destination" in c for c in result.brief.clarifications_needed)
 
 
 def test_unresolved_destination_asks_for_clarification() -> None:
@@ -116,7 +116,7 @@ def test_unresolved_destination_asks_for_clarification() -> None:
     )
     result = _coordinator(fake).plan_itinerary("2 nights in Atlantis", traveler_id="tr_arjun")
     assert result.itinerary is None
-    assert "destination" in result.brief.clarifications_needed
+    assert any("destination" in c for c in result.brief.clarifications_needed)
 
 
 def test_multi_turn_accumulates_destination_then_dates() -> None:

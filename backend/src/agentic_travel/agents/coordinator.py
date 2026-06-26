@@ -149,15 +149,16 @@ class Coordinator:
         if extract.interests:
             state.interests = list(dict.fromkeys([*state.interests, *extract.interests]))
 
-    @staticmethod
     def _build_brief(
+        self,
         intent: IntentResult,
         state: ConversationState,
         profile: TravelerProfile | None,
     ) -> TripBrief:
         missing: list[str] = []
         if not state.destination_city_ids:
-            missing.append("destination")
+            covered = ", ".join(sorted(c.name for c in self._store.all_cities()))
+            missing.append(f"a destination I currently cover ({covered})")
         if state.nights is None and state.start_date is None:
             missing.append("travel dates or duration")
         interests = list(

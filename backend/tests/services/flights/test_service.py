@@ -55,6 +55,25 @@ def test_unknown_route_returns_empty() -> None:
     assert service.search(request) == []
 
 
+def test_connecting_flight_via_hub() -> None:
+    # Colombo -> Tokyo has no direct route; it connects via Mumbai.
+    service = _service()
+    offers = service.search(
+        FlightSearchRequest(
+            origin_city_id="city_cmb",
+            destination_city_id="city_tyo",
+            departure_date=date(2026, 9, 12),
+        )
+    )
+    assert offers
+    legs = offers[0].segments
+    assert len(legs) == 2
+    assert legs[0].origin_city_id == "city_cmb"
+    assert legs[1].destination_city_id == "city_tyo"
+    assert legs[0].destination_city_id == legs[1].origin_city_id  # shared hub
+    assert offers[0].price.currency is Currency.INR
+
+
 def test_business_cabin_costs_more_than_economy() -> None:
     service = _service()
     base = FlightSearchRequest(

@@ -48,11 +48,11 @@ _INTERESTS = (
     "adventure",
     "wellness",
 )
-_DAY_SLOTS: tuple[tuple[time, time], ...] = (
-    (time(9, 30), time(11, 0)),
-    (time(11, 30), time(13, 0)),
-    (time(14, 0), time(16, 0)),
-)
+_DAY_START_MIN = 9 * 60 + 30  # first activity starts 09:30
+_DAY_LAST_END_MIN = 22 * 60  # nothing scheduled to end after 22:00
+_VISIT_MIN = 90
+_GAP_MIN = 30
+_MAX_ACTIVITIES_PER_DAY = 4
 
 
 class HeuristicLlmClient(LlmClient):
@@ -178,16 +178,22 @@ def _extract_party(text: str) -> int | None:
     return None
 
 
-def _slot_fits(hours: OpeningHours | None, weekday: int, start: time, end: time) -> bool:
+def _hhmm_to_min(value: str) -> int:
+    hours, minutes = value.split(":")
+    return int(hours) * 60 + int(minutes)
+
+
+def _open_window(hours: OpeningHours | None, weekday: int) -> tuple[int, int] | None:
+    """Return (opens, closes) in minutes for the weekday, or None if closed."""
     if hours is None:
-        return True
+        return 0, 24 * 60
     if weekday not in hours.days:
-        return False
-    opens_h, opens_m = (int(p) for p in hours.opens.split(":"))
-    closes_h, closes_m = (int(p) for p in hours.closes.split(":"))
-    opens = opens_h * 60 + opens_m
-    closes = closes_h * 60 + closes_m
-    return start.hour * 60 + start.minute >= opens and end.hour * 60 + end.minute <= closes
+        return None
+    opens = _hhmm_to_min(hours.opens)
+    closes = _hhmm_to_min(hours.closes)
+    if closes <= opens:  # "00:00"/overnight close means end of day
+        closes = 24 * 60
+    return opens, closes
 
 
 class HeuristicSynthesizer:
@@ -226,11 +232,16 @@ class HeuristicSynthesizer:
         for city in context.cities:
             remaining: list[POI] = list(city.candidate_pois)
             city_days = max(1, city.nights)
-            # Spread POIs evenly so no day is left empty while others overflow.
-            per_day = min(len(_DAY_SLOTS), max(1, -(-len(remaining) // city_days)))
-            for _ in range(city_days):
+            for offset in range(city_days):
+                days_left = city_days - offset
+                # Recompute each day so points of interest spread across every
+                # day rather than front-loading and leaving later days empty.
+                target = min(
+                    _MAX_ACTIVITIES_PER_DAY,
+                    max(1, -(-len(remaining) // days_left)) if remaining else 0,
+                )
                 when = base + timedelta(days=day_index - 1)
-                activities = self._fill_day(remaining, when.weekday(), per_day)
+                activities = self._fill_day(remaining, when.weekday(), target)
                 days.append(
                     PlannedDay(
                         day_index=day_index,
@@ -244,15 +255,43 @@ class HeuristicSynthesizer:
 
     @staticmethod
     def _fill_day(remaining: list[POI], weekday: int, target: int) -> list[PlannedActivity]:
+        """Schedule up to ``target`` POIs within their opening hours, in order."""
+        open_today = [
+            (poi, window)
+            for poi in remaining
+            if (window := _open_window(poi.opening_hours, weekday)) is not None
+        ]
+        # Earliest-opening first so the day flows morning to evening.
+        open_today.sort(key=lambda item: (item[1][0], -item[0].rating))
+
         activities: list[PlannedActivity] = []
-        for start, end in _DAY_SLOTS:
+        clock = _DAY_START_MIN
+        for poi, (opens, closes) in open_today:
             if len(activities) >= target:
                 break
-            chosen = next(
-                (p for p in remaining if _slot_fits(p.opening_hours, weekday, start, end)), None
-            )
-            if chosen is None:
+            start = max(clock, opens)
+            end = min(start + _VISIT_MIN, closes)
+            if start >= _DAY_LAST_END_MIN or end - start < 45:
                 continue
-            remaining.remove(chosen)
-            activities.append(PlannedActivity(poi_id=chosen.id, start=start, end=end))
+            activities.append(
+                PlannedActivity(
+                    poi_id=poi.id,
+                    start=time(start // 60, start % 60),
+                    end=time(min(end, _DAY_LAST_END_MIN) // 60, min(end, _DAY_LAST_END_MIN) % 60),
+                )
+            )
+            remaining.remove(poi)
+            clock = end + _GAP_MIN
+        # Never leave a day empty while POIs remain: place the best one we can.
+        if not activities and remaining:
+            poi = next((p for p, _ in open_today), remaining[0])
+            remaining.remove(poi)
+            fallback_end = _DAY_START_MIN + _VISIT_MIN
+            activities.append(
+                PlannedActivity(
+                    poi_id=poi.id,
+                    start=time(_DAY_START_MIN // 60, _DAY_START_MIN % 60),
+                    end=time(fallback_end // 60, fallback_end % 60),
+                )
+            )
         return activities

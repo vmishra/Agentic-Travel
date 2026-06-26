@@ -1,6 +1,85 @@
 {
   "rules": [
-    { "passport_country": "IN", "destination_country": "AE", "category": "visa_on_arrival", "processing_days": 0, "fee": { "amount": "0", "currency": "AED" }, "max_stay_days": 14, "notes": "Visa on arrival for Indian nationals holding a valid US visa, UK or Schengen residence; otherwise apply for a pre-arranged e-visa." },
-    { "passport_country": "IN", "destination_country": "LK", "category": "e_visa", "processing_days": 2, "fee": { "amount": "20", "currency": "USD" }, "max_stay_days": 30, "notes": "Electronic Travel Authorization (ETA) must be obtained online before arrival." }
+    {
+      "passport_country": "IN",
+      "destination_country": "AE",
+      "category": "visa_on_arrival",
+      "processing_days": 0,
+      "fee": {
+        "amount": "0",
+        "currency": "AED"
+      },
+      "max_stay_days": 14,
+      "notes": "Visa on arrival for Indian nationals holding a valid US visa, UK or Schengen residence; otherwise apply for a pre-arranged e-visa."
+    },
+    {
+      "passport_country": "IN",
+      "destination_country": "LK",
+      "category": "e_visa",
+      "processing_days": 2,
+      "fee": {
+        "amount": "20",
+        "currency": "USD"
+      },
+      "max_stay_days": 30,
+      "notes": "Electronic Travel Authorization (ETA) must be obtained online before arrival."
+    },
+    {
+      "passport_country": "IN",
+      "destination_country": "US",
+      "category": "embassy",
+      "processing_days": 30,
+      "fee": {
+        "amount": "185.00",
+        "currency": "USD"
+      },
+      "max_stay_days": 180,
+      "notes": "Indian nationals need a B1/B2 visitor visa. Apply online (DS-160), pay the fee, and attend an in-person interview at a U.S. consulate. Visa is typically valid for 10 years; stay is determined by CBP on entry."
+    },
+    {
+      "passport_country": "IN",
+      "destination_country": "GB",
+      "category": "embassy",
+      "processing_days": 15,
+      "fee": {
+        "amount": "127",
+        "currency": "GBP"
+      },
+      "max_stay_days": 180,
+      "notes": "Indian passport holders require a UK Standard Visitor visa applied for in advance online with biometrics submitted at a visa application centre. Allows tourism, business and family visits for up to 6 months per entry."
+    },
+    {
+      "passport_country": "IN",
+      "destination_country": "FR",
+      "category": "embassy",
+      "processing_days": 15,
+      "fee": {
+        "amount": "90",
+        "currency": "EUR"
+      },
+      "max_stay_days": 90,
+      "notes": "Indian passport holders require a Schengen short-stay (Type C) visa to enter France. Apply via VFS Global / the French consulate up to 6 months before travel. Allows stays of up to 90 days within any 180-day period across the Schengen area. Standard visa fee is EUR 90 (lower for children); travel insurance with EUR 30,000 medical coverage and proof of accommodation and funds are required."
+    },
+    {
+      "passport_country": "IN",
+      "destination_country": "JP",
+      "category": "e_visa",
+      "processing_days": 5,
+      "fee": null,
+      "max_stay_days": 90,
+      "notes": "Indian nationals can apply for a Japan eVisa for short-term tourism through the official JAPAN eVISA portal (mofa.go.jp) when applying via a registered travel agency. The single-entry tourist eVisa permits stays of up to 90 days and the consular visa fee is currently waived; a printed visa issuance notice must be presented at immigration."
+    },
+    {
+      "passport_country": "IN",
+      "destination_country": "SG",
+      "category": "e_visa",
+      "processing_days": 3,
+      "fee": {
+        "amount": "30",
+        "currency": "SGD"
+      },
+      "max_stay_days": 30,
+      "notes": "Indian passport holders require an e-Visa to enter Singapore. Apply online through an authorised visa agent or Strategic Visa Issuance System (SAVE) before travel; multiple-entry visas are typically valid up to 2 years with a maximum stay of 30 days per visit."
+    }
   ]
 }

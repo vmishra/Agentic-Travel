@@ -1,14 +1,674 @@
 {
   "hotels": [
-    { "hotel_id": "htl_bom_taj", "name": "The Taj Mahal Palace", "city_id": "city_bom", "brand": "Taj Hotels", "location": { "lat": 18.9217, "lng": 72.8332 }, "star_rating": 5, "guest_rating": 9.1, "review_count": 12840, "amenities": ["wifi", "pool", "breakfast", "gym", "spa"], "budget_tier": "luxury", "nightly_rate": { "amount": "21000", "currency": "INR" } },
-    { "hotel_id": "htl_bom_trident", "name": "Trident Nariman Point", "city_id": "city_bom", "brand": "Oberoi Group", "location": { "lat": 18.9266, "lng": 72.8230 }, "star_rating": 5, "guest_rating": 8.7, "review_count": 9320, "amenities": ["wifi", "pool", "breakfast", "gym"], "budget_tier": "premium", "nightly_rate": { "amount": "12500", "currency": "INR" } },
-    { "hotel_id": "htl_bom_ibis", "name": "ibis Mumbai Airport", "city_id": "city_bom", "brand": "Accor", "location": { "lat": 19.0972, "lng": 72.8517 }, "star_rating": 3, "guest_rating": 8.0, "review_count": 5410, "amenities": ["wifi", "breakfast", "gym", "airport_shuttle"], "budget_tier": "mid_range", "nightly_rate": { "amount": "5200", "currency": "INR" } },
-    { "hotel_id": "htl_goi_taj_fort", "name": "Taj Fort Aguada Resort & Spa", "city_id": "city_goi", "brand": "Taj Hotels", "location": { "lat": 15.4926, "lng": 73.7669 }, "star_rating": 5, "guest_rating": 8.9, "review_count": 7650, "amenities": ["wifi", "pool", "breakfast", "spa"], "budget_tier": "luxury", "nightly_rate": { "amount": "18500", "currency": "INR" } },
-    { "hotel_id": "htl_goi_novotel", "name": "Novotel Goa Resort & Spa", "city_id": "city_goi", "brand": "Accor", "location": { "lat": 15.4730, "lng": 73.8220 }, "star_rating": 4, "guest_rating": 8.4, "review_count": 6120, "amenities": ["wifi", "pool", "breakfast", "gym"], "budget_tier": "premium", "nightly_rate": { "amount": "9800", "currency": "INR" } },
-    { "hotel_id": "htl_goi_zostel", "name": "Zostel Goa", "city_id": "city_goi", "brand": "Zostel", "location": { "lat": 15.5520, "lng": 73.7510 }, "star_rating": 2, "guest_rating": 8.1, "review_count": 3870, "amenities": ["wifi", "breakfast"], "budget_tier": "budget", "nightly_rate": { "amount": "1600", "currency": "INR" } },
-    { "hotel_id": "htl_dxb_atlantis", "name": "Atlantis, The Palm", "city_id": "city_dxb", "brand": "Atlantis Resorts", "location": { "lat": 25.1304, "lng": 55.1171 }, "star_rating": 5, "guest_rating": 8.8, "review_count": 41200, "amenities": ["wifi", "pool", "breakfast", "gym", "spa"], "budget_tier": "luxury", "nightly_rate": { "amount": "1450", "currency": "AED" } },
-    { "hotel_id": "htl_dxb_rove", "name": "Rove Downtown", "city_id": "city_dxb", "brand": "Rove Hotels", "location": { "lat": 25.1893, "lng": 55.2769 }, "star_rating": 3, "guest_rating": 8.5, "review_count": 18900, "amenities": ["wifi", "pool", "gym"], "budget_tier": "mid_range", "nightly_rate": { "amount": "420", "currency": "AED" } },
-    { "hotel_id": "htl_cmb_shangrila", "name": "Shangri-La Colombo", "city_id": "city_cmb", "brand": "Shangri-La", "location": { "lat": 6.9234, "lng": 79.8487 }, "star_rating": 5, "guest_rating": 8.9, "review_count": 11200, "amenities": ["wifi", "pool", "breakfast", "gym", "spa"], "budget_tier": "luxury", "nightly_rate": { "amount": "52000", "currency": "INR" } },
-    { "hotel_id": "htl_cmb_cinnamon", "name": "Cinnamon Grand Colombo", "city_id": "city_cmb", "brand": "Cinnamon Hotels", "location": { "lat": 6.9170, "lng": 79.8497 }, "star_rating": 4, "guest_rating": 8.3, "review_count": 8740, "amenities": ["wifi", "pool", "breakfast", "gym"], "budget_tier": "premium", "nightly_rate": { "amount": "28000", "currency": "INR" } }
+    {
+      "hotel_id": "htl_bom_taj",
+      "name": "The Taj Mahal Palace",
+      "city_id": "city_bom",
+      "brand": "Taj Hotels",
+      "location": {
+        "lat": 18.9217,
+        "lng": 72.8332
+      },
+      "star_rating": 5,
+      "guest_rating": 9.1,
+      "review_count": 12840,
+      "amenities": [
+        "wifi",
+        "pool",
+        "breakfast",
+        "gym",
+        "spa"
+      ],
+      "budget_tier": "luxury",
+      "nightly_rate": {
+        "amount": "21000",
+        "currency": "INR"
+      }
+    },
+    {
+      "hotel_id": "htl_bom_trident",
+      "name": "Trident Nariman Point",
+      "city_id": "city_bom",
+      "brand": "Oberoi Group",
+      "location": {
+        "lat": 18.9266,
+        "lng": 72.823
+      },
+      "star_rating": 5,
+      "guest_rating": 8.7,
+      "review_count": 9320,
+      "amenities": [
+        "wifi",
+        "pool",
+        "breakfast",
+        "gym"
+      ],
+      "budget_tier": "premium",
+      "nightly_rate": {
+        "amount": "12500",
+        "currency": "INR"
+      }
+    },
+    {
+      "hotel_id": "htl_bom_ibis",
+      "name": "ibis Mumbai Airport",
+      "city_id": "city_bom",
+      "brand": "Accor",
+      "location": {
+        "lat": 19.0972,
+        "lng": 72.8517
+      },
+      "star_rating": 3,
+      "guest_rating": 8.0,
+      "review_count": 5410,
+      "amenities": [
+        "wifi",
+        "breakfast",
+        "gym",
+        "airport_shuttle"
+      ],
+      "budget_tier": "mid_range",
+      "nightly_rate": {
+        "amount": "5200",
+        "currency": "INR"
+      }
+    },
+    {
+      "hotel_id": "htl_goi_taj_fort",
+      "name": "Taj Fort Aguada Resort & Spa",
+      "city_id": "city_goi",
+      "brand": "Taj Hotels",
+      "location": {
+        "lat": 15.4926,
+        "lng": 73.7669
+      },
+      "star_rating": 5,
+      "guest_rating": 8.9,
+      "review_count": 7650,
+      "amenities": [
+        "wifi",
+        "pool",
+        "breakfast",
+        "spa"
+      ],
+      "budget_tier": "luxury",
+      "nightly_rate": {
+        "amount": "18500",
+        "currency": "INR"
+      }
+    },
+    {
+      "hotel_id": "htl_goi_novotel",
+      "name": "Novotel Goa Resort & Spa",
+      "city_id": "city_goi",
+      "brand": "Accor",
+      "location": {
+        "lat": 15.473,
+        "lng": 73.822
+      },
+      "star_rating": 4,
+      "guest_rating": 8.4,
+      "review_count": 6120,
+      "amenities": [
+        "wifi",
+        "pool",
+        "breakfast",
+        "gym"
+      ],
+      "budget_tier": "premium",
+      "nightly_rate": {
+        "amount": "9800",
+        "currency": "INR"
+      }
+    },
+    {
+      "hotel_id": "htl_goi_zostel",
+      "name": "Zostel Goa",
+      "city_id": "city_goi",
+      "brand": "Zostel",
+      "location": {
+        "lat": 15.552,
+        "lng": 73.751
+      },
+      "star_rating": 2,
+      "guest_rating": 8.1,
+      "review_count": 3870,
+      "amenities": [
+        "wifi",
+        "breakfast"
+      ],
+      "budget_tier": "budget",
+      "nightly_rate": {
+        "amount": "1600",
+        "currency": "INR"
+      }
+    },
+    {
+      "hotel_id": "htl_dxb_atlantis",
+      "name": "Atlantis, The Palm",
+      "city_id": "city_dxb",
+      "brand": "Atlantis Resorts",
+      "location": {
+        "lat": 25.1304,
+        "lng": 55.1171
+      },
+      "star_rating": 5,
+      "guest_rating": 8.8,
+      "review_count": 41200,
+      "amenities": [
+        "wifi",
+        "pool",
+        "breakfast",
+        "gym",
+        "spa"
+      ],
+      "budget_tier": "luxury",
+      "nightly_rate": {
+        "amount": "1450",
+        "currency": "AED"
+      }
+    },
+    {
+      "hotel_id": "htl_dxb_rove",
+      "name": "Rove Downtown",
+      "city_id": "city_dxb",
+      "brand": "Rove Hotels",
+      "location": {
+        "lat": 25.1893,
+        "lng": 55.2769
+      },
+      "star_rating": 3,
+      "guest_rating": 8.5,
+      "review_count": 18900,
+      "amenities": [
+        "wifi",
+        "pool",
+        "gym"
+      ],
+      "budget_tier": "mid_range",
+      "nightly_rate": {
+        "amount": "420",
+        "currency": "AED"
+      }
+    },
+    {
+      "hotel_id": "htl_cmb_shangrila",
+      "name": "Shangri-La Colombo",
+      "city_id": "city_cmb",
+      "brand": "Shangri-La",
+      "location": {
+        "lat": 6.9234,
+        "lng": 79.8487
+      },
+      "star_rating": 5,
+      "guest_rating": 8.9,
+      "review_count": 11200,
+      "amenities": [
+        "wifi",
+        "pool",
+        "breakfast",
+        "gym",
+        "spa"
+      ],
+      "budget_tier": "luxury",
+      "nightly_rate": {
+        "amount": "52000",
+        "currency": "INR"
+      }
+    },
+    {
+      "hotel_id": "htl_cmb_cinnamon",
+      "name": "Cinnamon Grand Colombo",
+      "city_id": "city_cmb",
+      "brand": "Cinnamon Hotels",
+      "location": {
+        "lat": 6.917,
+        "lng": 79.8497
+      },
+      "star_rating": 4,
+      "guest_rating": 8.3,
+      "review_count": 8740,
+      "amenities": [
+        "wifi",
+        "pool",
+        "breakfast",
+        "gym"
+      ],
+      "budget_tier": "premium",
+      "nightly_rate": {
+        "amount": "28000",
+        "currency": "INR"
+      }
+    },
+    {
+      "hotel_id": "htl_sfo_fairmont",
+      "name": "Fairmont San Francisco",
+      "city_id": "city_sfo",
+      "brand": "Fairmont",
+      "location": {
+        "lat": 37.7924,
+        "lng": -122.4102
+      },
+      "star_rating": 5,
+      "guest_rating": 8.8,
+      "review_count": 4200,
+      "amenities": [
+        "wifi",
+        "gym",
+        "spa",
+        "breakfast"
+      ],
+      "budget_tier": "luxury",
+      "nightly_rate": {
+        "amount": "499.00",
+        "currency": "USD"
+      }
+    },
+    {
+      "hotel_id": "htl_sfo_marriott_marquis",
+      "name": "San Francisco Marriott Marquis",
+      "city_id": "city_sfo",
+      "brand": "Marriott",
+      "location": {
+        "lat": 37.7846,
+        "lng": -122.4036
+      },
+      "star_rating": 4,
+      "guest_rating": 8.4,
+      "review_count": 6100,
+      "amenities": [
+        "wifi",
+        "gym",
+        "breakfast",
+        "spa"
+      ],
+      "budget_tier": "premium",
+      "nightly_rate": {
+        "amount": "319.00",
+        "currency": "USD"
+      }
+    },
+    {
+      "hotel_id": "htl_sfo_hi_fishermans_wharf",
+      "name": "Holiday Inn Fisherman's Wharf",
+      "city_id": "city_sfo",
+      "brand": "Holiday Inn",
+      "location": {
+        "lat": 37.8062,
+        "lng": -122.4187
+      },
+      "star_rating": 3,
+      "guest_rating": 7.9,
+      "review_count": 3300,
+      "amenities": [
+        "wifi",
+        "gym",
+        "breakfast"
+      ],
+      "budget_tier": "mid_range",
+      "nightly_rate": {
+        "amount": "189.00",
+        "currency": "USD"
+      }
+    },
+    {
+      "hotel_id": "htl_nyc_plaza",
+      "name": "The Plaza Hotel",
+      "city_id": "city_nyc",
+      "brand": "Fairmont",
+      "location": {
+        "lat": 40.7644,
+        "lng": -73.9744
+      },
+      "star_rating": 5,
+      "guest_rating": 9.1,
+      "review_count": 8420,
+      "amenities": [
+        "wifi",
+        "spa",
+        "gym",
+        "breakfast",
+        "airport_shuttle"
+      ],
+      "budget_tier": "luxury",
+      "nightly_rate": {
+        "amount": "1095.00",
+        "currency": "USD"
+      }
+    },
+    {
+      "hotel_id": "htl_nyc_marriott_marquis",
+      "name": "New York Marriott Marquis",
+      "city_id": "city_nyc",
+      "brand": "Marriott",
+      "location": {
+        "lat": 40.759,
+        "lng": -73.9857
+      },
+      "star_rating": 4,
+      "guest_rating": 8.4,
+      "review_count": 15230,
+      "amenities": [
+        "wifi",
+        "gym",
+        "breakfast",
+        "spa"
+      ],
+      "budget_tier": "premium",
+      "nightly_rate": {
+        "amount": "419.00",
+        "currency": "USD"
+      }
+    },
+    {
+      "hotel_id": "htl_nyc_pod_51",
+      "name": "Pod 51 Hotel",
+      "city_id": "city_nyc",
+      "brand": "Pod Hotels",
+      "location": {
+        "lat": 40.756,
+        "lng": -73.969
+      },
+      "star_rating": 3,
+      "guest_rating": 8.0,
+      "review_count": 6210,
+      "amenities": [
+        "wifi",
+        "breakfast"
+      ],
+      "budget_tier": "mid_range",
+      "nightly_rate": {
+        "amount": "189.00",
+        "currency": "USD"
+      }
+    },
+    {
+      "hotel_id": "htl_lon_savoy",
+      "name": "The Savoy",
+      "city_id": "city_lon",
+      "brand": "Fairmont",
+      "location": {
+        "lat": 51.5101,
+        "lng": -0.1196
+      },
+      "star_rating": 5,
+      "guest_rating": 9.2,
+      "review_count": 8742,
+      "amenities": [
+        "wifi",
+        "pool",
+        "breakfast",
+        "gym",
+        "spa"
+      ],
+      "budget_tier": "luxury",
+      "nightly_rate": {
+        "amount": "750.00",
+        "currency": "GBP"
+      }
+    },
+    {
+      "hotel_id": "htl_lon_strand_palace",
+      "name": "Strand Palace Hotel",
+      "city_id": "city_lon",
+      "brand": "Independent",
+      "location": {
+        "lat": 51.5117,
+        "lng": -0.1213
+      },
+      "star_rating": 4,
+      "guest_rating": 8.4,
+      "review_count": 15230,
+      "amenities": [
+        "wifi",
+        "breakfast",
+        "gym"
+      ],
+      "budget_tier": "premium",
+      "nightly_rate": {
+        "amount": "245.00",
+        "currency": "GBP"
+      }
+    },
+    {
+      "hotel_id": "htl_lon_premier_inn_county_hall",
+      "name": "Premier Inn London County Hall",
+      "city_id": "city_lon",
+      "brand": "Premier Inn",
+      "location": {
+        "lat": 51.5012,
+        "lng": -0.1187
+      },
+      "star_rating": 3,
+      "guest_rating": 8.6,
+      "review_count": 12104,
+      "amenities": [
+        "wifi",
+        "breakfast"
+      ],
+      "budget_tier": "mid_range",
+      "nightly_rate": {
+        "amount": "135.00",
+        "currency": "GBP"
+      }
+    },
+    {
+      "hotel_id": "htl_par_ritz",
+      "name": "Ritz Paris",
+      "city_id": "city_par",
+      "brand": "The Ritz",
+      "location": {
+        "lat": 48.8682,
+        "lng": 2.3287
+      },
+      "star_rating": 5,
+      "guest_rating": 9.4,
+      "review_count": 3120,
+      "amenities": [
+        "wifi",
+        "pool",
+        "breakfast",
+        "gym",
+        "spa"
+      ],
+      "budget_tier": "luxury",
+      "nightly_rate": {
+        "amount": "1850.00",
+        "currency": "EUR"
+      }
+    },
+    {
+      "hotel_id": "htl_par_pullman_tour_eiffel",
+      "name": "Pullman Paris Tour Eiffel",
+      "city_id": "city_par",
+      "brand": "Pullman (Accor)",
+      "location": {
+        "lat": 48.8554,
+        "lng": 2.293
+      },
+      "star_rating": 4,
+      "guest_rating": 8.6,
+      "review_count": 8740,
+      "amenities": [
+        "wifi",
+        "breakfast",
+        "gym",
+        "spa"
+      ],
+      "budget_tier": "premium",
+      "nightly_rate": {
+        "amount": "340.00",
+        "currency": "EUR"
+      }
+    },
+    {
+      "hotel_id": "htl_par_mercure_montmartre",
+      "name": "Mercure Paris Montmartre Sacre-Coeur",
+      "city_id": "city_par",
+      "brand": "Mercure (Accor)",
+      "location": {
+        "lat": 48.8847,
+        "lng": 2.3279
+      },
+      "star_rating": 4,
+      "guest_rating": 8.1,
+      "review_count": 5430,
+      "amenities": [
+        "wifi",
+        "breakfast",
+        "gym"
+      ],
+      "budget_tier": "mid_range",
+      "nightly_rate": {
+        "amount": "165.00",
+        "currency": "EUR"
+      }
+    },
+    {
+      "hotel_id": "htl_tyo_park_hyatt",
+      "name": "Park Hyatt Tokyo",
+      "city_id": "city_tyo",
+      "brand": "Hyatt",
+      "location": {
+        "lat": 35.6857,
+        "lng": 139.6905
+      },
+      "star_rating": 5,
+      "guest_rating": 9.2,
+      "review_count": 4120,
+      "amenities": [
+        "wifi",
+        "pool",
+        "breakfast",
+        "gym",
+        "spa"
+      ],
+      "budget_tier": "luxury",
+      "nightly_rate": {
+        "amount": "95000",
+        "currency": "JPY"
+      }
+    },
+    {
+      "hotel_id": "htl_tyo_cerulean_tower",
+      "name": "Cerulean Tower Tokyu Hotel",
+      "city_id": "city_tyo",
+      "brand": "Tokyu Hotels",
+      "location": {
+        "lat": 35.6566,
+        "lng": 139.6986
+      },
+      "star_rating": 5,
+      "guest_rating": 8.7,
+      "review_count": 5380,
+      "amenities": [
+        "wifi",
+        "breakfast",
+        "gym",
+        "spa"
+      ],
+      "budget_tier": "premium",
+      "nightly_rate": {
+        "amount": "42000",
+        "currency": "JPY"
+      }
+    },
+    {
+      "hotel_id": "htl_tyo_shinjuku_granbell",
+      "name": "Shinjuku Granbell Hotel",
+      "city_id": "city_tyo",
+      "brand": "Granbell Hotels",
+      "location": {
+        "lat": 35.6938,
+        "lng": 139.7035
+      },
+      "star_rating": 4,
+      "guest_rating": 8.3,
+      "review_count": 3210,
+      "amenities": [
+        "wifi",
+        "breakfast",
+        "gym"
+      ],
+      "budget_tier": "mid_range",
+      "nightly_rate": {
+        "amount": "21000",
+        "currency": "JPY"
+      }
+    },
+    {
+      "hotel_id": "htl_sin_marina_bay_sands",
+      "name": "Marina Bay Sands",
+      "city_id": "city_sin",
+      "brand": "Marina Bay Sands",
+      "location": {
+        "lat": 1.2834,
+        "lng": 103.8607
+      },
+      "star_rating": 5,
+      "guest_rating": 8.9,
+      "review_count": 38450,
+      "amenities": [
+        "wifi",
+        "pool",
+        "breakfast",
+        "gym",
+        "spa"
+      ],
+      "budget_tier": "luxury",
+      "nightly_rate": {
+        "amount": "780",
+        "currency": "SGD"
+      }
+    },
+    {
+      "hotel_id": "htl_sin_pan_pacific",
+      "name": "Pan Pacific Singapore",
+      "city_id": "city_sin",
+      "brand": "Pan Pacific",
+      "location": {
+        "lat": 1.292,
+        "lng": 103.8597
+      },
+      "star_rating": 5,
+      "guest_rating": 8.7,
+      "review_count": 9120,
+      "amenities": [
+        "wifi",
+        "pool",
+        "breakfast",
+        "gym",
+        "spa",
+        "airport_shuttle"
+      ],
+      "budget_tier": "premium",
+      "nightly_rate": {
+        "amount": "420",
+        "currency": "SGD"
+      }
+    },
+    {
+      "hotel_id": "htl_sin_hotel_g",
+      "name": "Hotel G Singapore",
+      "city_id": "city_sin",
+      "brand": "Hotel G",
+      "location": {
+        "lat": 1.301,
+        "lng": 103.8556
+      },
+      "star_rating": 4,
+      "guest_rating": 8.1,
+      "review_count": 5640,
+      "amenities": [
+        "wifi",
+        "gym",
+        "breakfast"
+      ],
+      "budget_tier": "mid_range",
+      "nightly_rate": {
+        "amount": "180",
+        "currency": "SGD"
+      }
+    }
   ]
 }
