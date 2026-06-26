@@ -1,8 +1,6 @@
 from datetime import date, time
 from decimal import Decimal
 
-import pytest
-
 from agentic_travel.data.loader import load_default_graph_store
 from agentic_travel.domain.money import Currency, Money
 from agentic_travel.graph.store import InMemoryGraphStore
@@ -123,6 +121,10 @@ def test_nights_property() -> None:
     assert itin.nights == 3
 
 
-def test_activity_duration() -> None:
-    with pytest.raises(ValueError):
-        Activity(poi_id="p", name="n", start=time(11, 0), end=time(10, 0))
+def test_invalid_activity_times_is_error() -> None:
+    itin = _valid_goa_itinerary()
+    itin.days[0].activities[0].start = time(11, 0)
+    itin.days[0].activities[0].end = time(10, 0)
+    report = validate_itinerary(itin, _store())
+    assert any(i.code == "invalid_times" for i in report.issues)
+    assert not report.is_valid

@@ -89,6 +89,19 @@ def _check_day(
         )
 
     for activity in day.activities:
+        if not activity.has_valid_times:
+            issues.append(
+                ValidationIssue(
+                    severity=IssueSeverity.ERROR,
+                    code="invalid_times",
+                    message=(
+                        f"'{activity.name}' ends at or before it starts "
+                        f"({activity.start}-{activity.end})."
+                    ),
+                    day_index=day.day_index,
+                    poi_id=activity.poi_id,
+                )
+            )
         poi = store.get_poi(activity.poi_id)
         if poi is None:
             issues.append(

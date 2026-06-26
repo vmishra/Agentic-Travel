@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from datetime import date, time
 
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, Field
 
 from agentic_travel.domain.money import Money
 from agentic_travel.services.flights.models import FlightOffer
@@ -32,16 +32,15 @@ class Activity(BaseModel):
     estimated_cost: Money | None = None
     notes: str = ""
 
-    @model_validator(mode="after")
-    def _check_times(self) -> Activity:
-        if _minutes(self.end) <= _minutes(self.start):
-            raise ValueError("activity end must be after start")
-        return self
-
     @property
     def duration_minutes(self) -> int:
-        """Scheduled duration of the activity in minutes."""
+        """Scheduled duration in minutes (negative if end precedes start)."""
         return _minutes(self.end) - _minutes(self.start)
+
+    @property
+    def has_valid_times(self) -> bool:
+        """True when the activity ends strictly after it starts."""
+        return _minutes(self.end) > _minutes(self.start)
 
 
 class DayPlan(BaseModel):
