@@ -106,6 +106,9 @@ class HeuristicLlmClient(LlmClient):
     def _brief(prompt: str) -> BriefExtract:
         text = prompt.lower()
         nights = _extract_nights(text)
+        # When a duration is given but no explicit date, assume a near-future
+        # start so flights can be priced. Live reasoning extracts real dates.
+        start = date.today() + timedelta(days=30) if nights is not None else None
         party = _extract_party(text)
         occasion = next(
             (o for o in ("anniversary", "honeymoon", "birthday", "wedding") if o in text), None
@@ -113,6 +116,7 @@ class HeuristicLlmClient(LlmClient):
         interests = list(dict.fromkeys(w for w in _INTERESTS if w in text))
         return BriefExtract(
             destination_query=prompt,
+            start_date=start,
             nights=nights,
             party_size=party,
             occasion=occasion,
