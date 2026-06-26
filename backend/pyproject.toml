@@ -9,6 +9,7 @@ authors = [{ name = "Vikas Mishra" }]
 dependencies = [
     "ag-ui-protocol>=0.1.7",
     "fastapi>=0.115",
+    "google-adk[a2a]>=1.0",
     "google-genai>=1.0",
     "mcp>=1.12",
     "pydantic>=2.7,<3",
