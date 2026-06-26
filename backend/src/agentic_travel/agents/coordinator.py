@@ -17,7 +17,7 @@ from agentic_travel.agents.enrichment import EnrichmentAgent
 from agentic_travel.agents.intent import IntentAgent
 from agentic_travel.agents.models import TripBrief
 from agentic_travel.agents.planning import OptionsGatherer, PlanningContext
-from agentic_travel.agents.synthesizer import ItineraryAssembler, SynthesizerAgent
+from agentic_travel.agents.synthesizer import ItineraryAssembler, SynthesisStrategy
 from agentic_travel.domain.money import Money
 from agentic_travel.graph.store import GraphStore
 from agentic_travel.itinerary.models import Itinerary
@@ -61,6 +61,7 @@ class Coordinator:
         self,
         *,
         llm: LlmClient,
+        synthesizer: SynthesisStrategy,
         store: GraphStore,
         flights: FlightService,
         hotels: HotelService,
@@ -71,14 +72,14 @@ class Coordinator:
         tracer: Tracer | None = None,
         max_repairs: int = 2,
     ) -> None:
-        """Construct the coordinator and its agents from services and config."""
+        """Construct the coordinator from a model client, synthesis strategy, and services."""
         self._intent = IntentAgent(llm, tracer=tracer)
         self._enrich = EnrichmentAgent(llm, tracer=tracer)
         self._resolver = DestinationResolver(store)
         self._gatherer = OptionsGatherer(
             store=store, flights=flights, hotels=hotels, visa=visa, weather=weather, tracer=tracer
         )
-        self._synth = SynthesizerAgent(llm, tracer=tracer)
+        self._synthesizer = synthesizer
         self._assembler = ItineraryAssembler(store)
         self._store = store
         self._memory = memory
@@ -142,9 +143,7 @@ class Coordinator:
         report = ValidationReport()
         max_attempts = self._max_repairs + 1
         for attempt in range(1, max_attempts + 1):
-            plan = self._synth.run(
-                context, model=self._models.planner, feedback=feedback
-            )
+            plan = self._synthesizer.propose(context, feedback=feedback)
             itinerary = self._assembler.assemble(
                 plan, context, itinerary_id=f"itin_{attempt}"
             )

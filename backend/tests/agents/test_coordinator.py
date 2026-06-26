@@ -1,9 +1,15 @@
 from datetime import date, time
 
 from agentic_travel.agents.coordinator import Coordinator, ModelConfig
-from agentic_travel.agents.intent import _IntentOut
+from agentic_travel.agents.intent import IntentOut
 from agentic_travel.agents.models import BriefExtract, TripIntent
-from agentic_travel.agents.synthesizer import PlannedActivity, PlannedDay, SynthesisPlan
+from agentic_travel.agents.synthesizer import (
+    LlmSynthesizer,
+    PlannedActivity,
+    PlannedDay,
+    SynthesisPlan,
+    SynthesizerAgent,
+)
 from agentic_travel.data.loader import load_default_graph_store
 from agentic_travel.llm.client import FakeLlmClient
 from agentic_travel.services.flights.service import FlightService
@@ -16,6 +22,7 @@ from agentic_travel.services.weather.service import WeatherService
 def _coordinator(fake: FakeLlmClient, *, max_repairs: int = 2) -> Coordinator:
     return Coordinator(
         llm=fake,
+        synthesizer=LlmSynthesizer(SynthesizerAgent(fake), model="planner"),
         store=load_default_graph_store(),
         flights=FlightService.from_default_dataset(),
         hotels=HotelService.from_default_dataset(),
@@ -27,8 +34,8 @@ def _coordinator(fake: FakeLlmClient, *, max_repairs: int = 2) -> Coordinator:
     )
 
 
-def _intent_goa() -> _IntentOut:
-    return _IntentOut(intent=TripIntent.ITINERARY, confidence=0.95, destination_hint="Goa")
+def _intent_goa() -> IntentOut:
+    return IntentOut(intent=TripIntent.ITINERARY, confidence=0.95, destination_hint="Goa")
 
 
 def _brief_goa() -> BriefExtract:
@@ -91,7 +98,7 @@ def test_repair_loop_recovers_from_invalid_first_plan() -> None:
 def test_missing_destination_asks_for_clarification() -> None:
     fake = FakeLlmClient(
         objects=[
-            _IntentOut(intent=TripIntent.ITINERARY, confidence=0.6),
+            IntentOut(intent=TripIntent.ITINERARY, confidence=0.6),
             BriefExtract(destination_query=""),
         ]
     )
@@ -103,7 +110,7 @@ def test_missing_destination_asks_for_clarification() -> None:
 def test_unresolved_destination_reports_error() -> None:
     fake = FakeLlmClient(
         objects=[
-            _IntentOut(intent=TripIntent.ITINERARY, confidence=0.8, destination_hint="Atlantis"),
+            IntentOut(intent=TripIntent.ITINERARY, confidence=0.8, destination_hint="Atlantis"),
             BriefExtract(destination_query="Atlantis", nights=2),
         ]
     )

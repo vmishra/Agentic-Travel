@@ -16,7 +16,7 @@ Also extract a short free-text destination hint if one is mentioned (else null).
 Return your best estimate with a calibrated confidence between 0 and 1."""
 
 
-class _IntentOut(BaseModel):
+class IntentOut(BaseModel):
     """Model-facing schema for intent classification."""
 
     intent: TripIntent
@@ -36,7 +36,7 @@ class IntentAgent(Agent):
                 model=model,
                 system=_SYSTEM,
                 prompt=query,
-                schema=_IntentOut,
+                schema=IntentOut,
             )
             return IntentResult(
                 intent=parsed.intent,

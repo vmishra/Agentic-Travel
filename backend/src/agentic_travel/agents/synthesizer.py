@@ -129,6 +129,31 @@ class SynthesizerAgent(Agent):
             return plan
 
 
+class SynthesisStrategy(Protocol):
+    """A strategy that proposes a `SynthesisPlan` for a planning context."""
+
+    def propose(
+        self, context: PlanningContext, *, feedback: list[str] | None = None
+    ) -> SynthesisPlan:
+        """Propose a plan, optionally addressing prior validation feedback."""
+        ...
+
+
+class LlmSynthesizer:
+    """Synthesis strategy backed by the model via :class:`SynthesizerAgent`."""
+
+    def __init__(self, agent: SynthesizerAgent, model: str) -> None:
+        """Wrap a synthesizer agent and the model id it should use."""
+        self._agent = agent
+        self._model = model
+
+    def propose(
+        self, context: PlanningContext, *, feedback: list[str] | None = None
+    ) -> SynthesisPlan:
+        """Delegate to the agent's model call."""
+        return self._agent.run(context, model=self._model, feedback=feedback)
+
+
 class _HasOfferId(Protocol):
     offer_id: str
 

@@ -2,7 +2,7 @@ from datetime import date
 from decimal import Decimal
 
 from agentic_travel.agents.enrichment import EnrichmentAgent
-from agentic_travel.agents.intent import IntentAgent, _IntentOut
+from agentic_travel.agents.intent import IntentAgent, IntentOut
 from agentic_travel.agents.models import BriefExtract, IntentResult, TripIntent
 from agentic_travel.domain.money import Currency
 from agentic_travel.domain.traveler import BudgetTier, FoodPreference, TravelerProfile
@@ -25,7 +25,7 @@ def _profile() -> TravelerProfile:
 
 def test_intent_agent_classifies_and_keeps_query() -> None:
     fake = FakeLlmClient(
-        objects=[_IntentOut(intent=TripIntent.ITINERARY, confidence=0.95, destination_hint="Goa")]
+        objects=[IntentOut(intent=TripIntent.ITINERARY, confidence=0.95, destination_hint="Goa")]
     )
     result = IntentAgent(fake).run("Plan me 3 nights in Goa", model="fast")
     assert result.intent is TripIntent.ITINERARY
@@ -34,7 +34,7 @@ def test_intent_agent_classifies_and_keeps_query() -> None:
 
 
 def test_intent_agent_emits_agent_span() -> None:
-    fake = FakeLlmClient(objects=[_IntentOut(intent=TripIntent.INQUIRY, confidence=0.8)])
+    fake = FakeLlmClient(objects=[IntentOut(intent=TripIntent.INQUIRY, confidence=0.8)])
     tracer = Tracer()
     IntentAgent(fake, tracer=tracer).run("Tell me about Dubai", model="fast")
     kinds = {(s.name, s.kind) for s in tracer.finished_spans()}
@@ -43,7 +43,7 @@ def test_intent_agent_emits_agent_span() -> None:
 
 def test_enrichment_merges_profile_defaults() -> None:
     intent_fake = FakeLlmClient(
-        objects=[_IntentOut(intent=TripIntent.ITINERARY, confidence=0.9, destination_hint="Goa")]
+        objects=[IntentOut(intent=TripIntent.ITINERARY, confidence=0.9, destination_hint="Goa")]
     )
     intent = IntentAgent(intent_fake).run("4 nights in Goa for an anniversary", model="fast")
 
