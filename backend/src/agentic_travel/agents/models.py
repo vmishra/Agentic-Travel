@@ -39,6 +39,7 @@ class TripBrief(BaseModel):
 
     intent: TripIntent
     traveler_id: str | None = None
+    passport_country: str = "IN"
     origin_city_id: str | None = None
     destination_query: str
     start_date: date | None = None

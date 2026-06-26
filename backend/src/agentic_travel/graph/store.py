@@ -46,6 +46,14 @@ class GraphStore(ABC):
         """Return the region with ``region_id``, or ``None`` if absent."""
 
     @abstractmethod
+    def all_countries(self) -> list[Country]:
+        """Return every country in the graph."""
+
+    @abstractmethod
+    def all_cities(self) -> list[City]:
+        """Return every city in the graph."""
+
+    @abstractmethod
     def get_country(self, country_id: str) -> Country | None:
         """Return the country with ``country_id``, or ``None`` if absent."""
 
@@ -89,6 +97,12 @@ class InMemoryGraphStore(GraphStore):
 
     def get_region(self, region_id: str) -> Region | None:  # noqa: D102 — see GraphStore
         return self._regions.get(region_id)
+
+    def all_countries(self) -> list[Country]:  # noqa: D102
+        return list(self._countries.values())
+
+    def all_cities(self) -> list[City]:  # noqa: D102
+        return list(self._cities.values())
 
     def get_country(self, country_id: str) -> Country | None:  # noqa: D102
         return self._countries.get(country_id)

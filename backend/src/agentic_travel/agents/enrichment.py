@@ -51,6 +51,7 @@ class EnrichmentAgent(Agent):
         return TripBrief(
             intent=intent.intent,
             traveler_id=profile.traveler_id if profile else None,
+            passport_country=profile.passport_country if profile else "IN",
             origin_city_id=profile.home_city_id if profile else None,
             destination_query=destination,
             start_date=extract.start_date,
