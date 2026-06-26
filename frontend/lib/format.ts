@@ -41,3 +41,43 @@ export function formatMs(ms: number | null): string {
   if (ms === null) return "—";
   return ms >= 1000 ? `${(ms / 1000).toFixed(2)}s` : `${Math.round(ms)}ms`;
 }
+
+function parseDate(iso: string): Date {
+  return new Date(`${iso}T00:00:00`);
+}
+
+/** Format a date range like "12 Sep – 16 Sep 2026". */
+export function formatDateRange(start: string, end: string): string {
+  if (start === end) {
+    return parseDate(start).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+  }
+  const left = parseDate(start).toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+  const right = parseDate(end).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+  return `${left} – ${right}`;
+}
+
+/** Format a day's date like "Friday, 12 September". */
+export function formatDayDate(iso: string): string {
+  return parseDate(iso).toLocaleDateString("en-GB", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  });
+}
+
+/** Minutes between two "HH:MM:SS" times. */
+export function minutesBetween(start: string, end: string): number {
+  const toMin = (t: string) => {
+    const [h, m] = t.split(":");
+    return Number(h) * 60 + Number(m);
+  };
+  return toMin(end) - toMin(start);
+}

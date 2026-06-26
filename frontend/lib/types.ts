@@ -65,13 +65,32 @@ export interface VisaRequirement {
   notes: string;
 }
 
+export interface GeoPoint {
+  lat: number;
+  lng: number;
+}
+
 export interface Activity {
   poi_id: string;
   name: string;
   start: string;
   end: string;
+  category: string;
+  location: GeoPoint | null;
+  rating: number | null;
   estimated_cost: Money | null;
+  travel_minutes_to_next: number | null;
   notes: string;
+}
+
+export interface CostBreakdown {
+  flights: Money;
+  stays: Money;
+  activities: Money;
+  total: Money;
+  per_person: Money;
+  per_day: Money;
+  note: string;
 }
 
 export interface DayPlan {
@@ -97,6 +116,10 @@ export interface Itinerary {
   days: DayPlan[];
   estimated_total: Money;
   summary: string;
+  style_tags: string[];
+  highlights: string[];
+  season_note: string | null;
+  cost_breakdown: CostBreakdown | null;
 }
 
 export interface ValidationIssue {

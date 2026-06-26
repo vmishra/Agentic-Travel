@@ -140,7 +140,7 @@ export default function Page() {
           <span className="brand__mark">
             Agentic<span>·</span>Travel
           </span>
-          <span className="brand__tag">bookable · instrumented</span>
+          <span className="brand__tag">a private travel concierge</span>
         </div>
         <div className="header__spacer" />
         <div className="telemetry">
@@ -248,9 +248,12 @@ export default function Page() {
                   <ItineraryView result={result} />
                 ) : (
                   <div className="empty">
-                    <div className="empty__glyph">— READY —</div>
+                    <div className="empty__glyph">Where to?</div>
                     <p>
-                      Your bookable itinerary will appear here.
+                      Describe the trip you have in mind and a complete, bookable
+                      itinerary will be composed here — flights, stays, a day-by-day
+                      plan, and the details that matter.
+                      <br />
                       <br />
                       Covering Goa, Mumbai, Dubai, Colombo, Singapore, Tokyo,
                       Paris, London, New York &amp; San Francisco.

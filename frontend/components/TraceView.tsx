@@ -29,8 +29,8 @@ export function TraceView({ spans, activeSteps, selectedId, onSelect }: TraceVie
   if (spans.length === 0 && activeSteps.length === 0) {
     return (
       <div className="empty">
-        <div className="empty__glyph">▮ ▯ ▯ ▯</div>
-        <p>The agent trace lights up here as a plan is built.</p>
+        <div className="empty__glyph">Behind the plan</div>
+        <p>As a trip is composed, each agent and tool appears here with its latency, tokens, and cost.</p>
       </div>
     );
   }
