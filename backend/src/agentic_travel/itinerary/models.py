@@ -11,6 +11,7 @@ from datetime import date, time
 
 from pydantic import BaseModel, Field
 
+from agentic_travel.domain.geo import GeoPoint
 from agentic_travel.domain.money import Money
 from agentic_travel.services.flights.models import FlightOffer
 from agentic_travel.services.hotels.models import HotelOffer
@@ -29,7 +30,11 @@ class Activity(BaseModel):
     name: str
     start: time
     end: time
+    category: str = ""
+    location: GeoPoint | None = None
+    rating: float | None = None
     estimated_cost: Money | None = None
+    travel_minutes_to_next: int | None = None
     notes: str = ""
 
     @property
@@ -53,6 +58,18 @@ class DayPlan(BaseModel):
     notes: str = ""
 
 
+class CostBreakdown(BaseModel):
+    """A tasteful split of the estimated trip cost, all in one currency."""
+
+    flights: Money
+    stays: Money
+    activities: Money
+    total: Money
+    per_person: Money
+    per_day: Money
+    note: str = ""
+
+
 class Itinerary(BaseModel):
     """A complete, bookable itinerary across one or more destinations."""
 
@@ -70,6 +87,10 @@ class Itinerary(BaseModel):
     days: list[DayPlan] = Field(default_factory=list)
     estimated_total: Money
     summary: str = ""
+    style_tags: list[str] = Field(default_factory=list)
+    highlights: list[str] = Field(default_factory=list)
+    season_note: str | None = None
+    cost_breakdown: CostBreakdown | None = None
 
     @property
     def nights(self) -> int:

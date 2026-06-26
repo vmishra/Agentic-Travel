@@ -1,6 +1,11 @@
 """Itinerary models and the deterministic validation guardrail."""
 
-from agentic_travel.itinerary.models import Activity, DayPlan, Itinerary
+from agentic_travel.itinerary.models import (
+    Activity,
+    CostBreakdown,
+    DayPlan,
+    Itinerary,
+)
 from agentic_travel.itinerary.validation import (
     IssueSeverity,
     ValidationIssue,
@@ -10,6 +15,7 @@ from agentic_travel.itinerary.validation import (
 
 __all__ = [
     "Activity",
+    "CostBreakdown",
     "DayPlan",
     "IssueSeverity",
     "Itinerary",
