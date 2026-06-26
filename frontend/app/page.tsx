@@ -16,6 +16,13 @@ interface Message {
 
 type View = "itinerary" | "trace";
 
+const SUGGESTIONS = [
+  "3 nights in Goa for a couple",
+  "5 days in Tokyo from 10 September",
+  "A week in Paris",
+  "San Francisco for 4 days",
+];
+
 export default function Page() {
   const [personas, setPersonas] = useState<TravelerProfile[]>([]);
   const [personaId, setPersonaId] = useState<string | null>(null);
@@ -189,6 +196,16 @@ export default function Page() {
             {running && <div className="msg msg--system">planning…</div>}
           </div>
 
+          {!result && !running && (
+            <div className="suggests">
+              {SUGGESTIONS.map((s) => (
+                <button key={s} className="chip" onClick={() => setInput(s)}>
+                  {s}
+                </button>
+              ))}
+            </div>
+          )}
+
           <div className="composer">
             <textarea
               rows={2}
@@ -232,7 +249,12 @@ export default function Page() {
                 ) : (
                   <div className="empty">
                     <div className="empty__glyph">— READY —</div>
-                    <p>Your bookable itinerary will appear here.</p>
+                    <p>
+                      Your bookable itinerary will appear here.
+                      <br />
+                      Covering Goa, Mumbai, Dubai, Colombo, Singapore, Tokyo,
+                      Paris, London, New York &amp; San Francisco.
+                    </p>
                   </div>
                 )
               ) : (

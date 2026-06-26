@@ -66,17 +66,26 @@ export function ItineraryView({ result }: { result: PlanningResult }) {
             <h3>Flights</h3>
             <div className="cardrow">
               {itinerary.flights.map((f) => {
-                const seg = f.segments[0];
+                const first = f.segments[0];
+                const last = f.segments[f.segments.length - 1];
+                const code = (id: string) => id.replace("city_", "").toUpperCase();
+                const minutes = f.segments.reduce((t, s) => t + s.duration_minutes, 0);
+                const stops = f.segments.length - 1;
+                const stopLabel =
+                  stops === 0
+                    ? "nonstop"
+                    : `${stops} stop · via ${code(first.destination_city_id)}`;
                 return (
                   <div className="tkt" key={f.offer_id}>
                     <div className="tkt__top">
-                      <span className="tkt__code">{seg.flight_number}</span>
+                      <span className="tkt__code">
+                        {f.segments.map((s) => s.flight_number).join(" · ")}
+                      </span>
                       <span className="tkt__price">{formatMoney(f.price)}</span>
                     </div>
                     <div className="tkt__meta">
-                      {seg.carrier.name} · {seg.origin_city_id.replace("city_", "").toUpperCase()} →{" "}
-                      {seg.destination_city_id.replace("city_", "").toUpperCase()} ·{" "}
-                      {formatDuration(seg.duration_minutes)}
+                      {first.carrier.name} · {code(first.origin_city_id)} →{" "}
+                      {code(last.destination_city_id)} · {formatDuration(minutes)} · {stopLabel}
                     </div>
                     <span className="tkt__tag">
                       {f.cabin} · {f.fare_tier}
