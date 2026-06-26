@@ -641,7 +641,6 @@ button {
   background: var(--surface);
   text-align: left;
   color: var(--mist);
-  width: 100%;
   transition: border-color 0.15s, transform 0.15s;
 }
 
@@ -702,6 +701,7 @@ button {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--mist);
+  white-space: nowrap;
 }
 
 .tracenode__metrics .t {

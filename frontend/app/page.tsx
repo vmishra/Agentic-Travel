@@ -36,6 +36,16 @@ export default function Page() {
 
   const threadRef = useRef<HTMLDivElement>(null);
   const startRef = useRef(0);
+  const sessionRef = useRef("");
+
+  const selectPersona = useCallback((id: string) => {
+    setPersonaId(id);
+    sessionRef.current = ""; // a new traveler starts a fresh conversation
+    setMessages([{ role: "system", text: "New trip — describe where and when." }]);
+    setResult(null);
+    setSpans([]);
+    setActiveSteps([]);
+  }, []);
 
   useEffect(() => {
     fetchPersonas()
@@ -82,10 +92,11 @@ export default function Page() {
     setRunning(true);
     startRef.current = performance.now();
     setElapsedMs(0);
+    if (!sessionRef.current) sessionRef.current = crypto.randomUUID();
 
     try {
       await streamPlan(
-        { query, travelerId: personaId },
+        { query, travelerId: personaId, sessionId: sessionRef.current },
         {
           onStepStarted: (name) => setActiveSteps((s) => [...s, name]),
           onSpan: (span) => setSpans((s) => [...s, span]),
@@ -159,7 +170,7 @@ export default function Page() {
               <button
                 key={p.traveler_id}
                 className={`persona ${p.traveler_id === personaId ? "persona--active" : ""}`}
-                onClick={() => setPersonaId(p.traveler_id)}
+                onClick={() => selectPersona(p.traveler_id)}
               >
                 <span className="persona__name">{p.display_name}</span>
                 <span className="persona__meta">
