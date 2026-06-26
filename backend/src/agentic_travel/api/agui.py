@@ -9,7 +9,7 @@ finally a state snapshot of the result.
 from __future__ import annotations
 
 import asyncio
-from collections.abc import AsyncIterator
+from collections.abc import AsyncIterator, Callable
 
 from ag_ui.core import (
     CustomEvent,
@@ -24,6 +24,7 @@ from ag_ui.core import (
 from ag_ui.encoder import EventEncoder
 
 from agentic_travel.agents.coordinator import PlanningResult
+from agentic_travel.agents.models import ConversationState
 from agentic_travel.api.dependencies import PlannerFactory
 from agentic_travel.observability.events import SpanEvent
 from agentic_travel.observability.span import Span
@@ -54,8 +55,10 @@ async def plan_event_stream(
     *,
     query: str,
     traveler_id: str | None,
+    state: ConversationState | None,
     thread_id: str,
     run_id: str,
+    persist: Callable[[ConversationState], None],
 ) -> AsyncIterator[str]:
     """Yield encoded AG-UI SSE frames for a planning run."""
     loop = asyncio.get_running_loop()
@@ -72,7 +75,7 @@ async def plan_event_stream(
     async def run() -> None:
         try:
             result = await asyncio.to_thread(
-                coordinator.plan_itinerary, query, traveler_id=traveler_id
+                coordinator.plan_itinerary, query, traveler_id=traveler_id, state=state
             )
             loop.call_soon_threadsafe(queue.put_nowait, ("result", result))
         except Exception as exc:  # noqa: BLE001 — surfaced to the client as RUN_ERROR
@@ -90,6 +93,7 @@ async def plan_event_stream(
                     yield frame
             elif kind == "result":
                 assert isinstance(payload, PlanningResult)
+                persist(payload.conversation)
                 yield encoder.encode(
                     StateSnapshotEvent(
                         type=EventType.STATE_SNAPSHOT, snapshot=_result_snapshot(payload)

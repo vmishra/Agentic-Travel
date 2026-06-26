@@ -64,3 +64,20 @@ class BriefExtract(BaseModel):
     budget_currency: str | None = None
     occasion: str | None = None
     interests: list[str] = Field(default_factory=list)
+
+
+class ConversationState(BaseModel):
+    """Slots accumulated across conversation turns for one planning session.
+
+    Each message contributes whatever it specifies; values persist until the
+    traveler changes them, so a destination and dates given in separate messages
+    combine into one plan.
+    """
+
+    destination_city_ids: list[str] = Field(default_factory=list)
+    start_date: date | None = None
+    nights: int | None = None
+    party_size: int | None = None
+    budget: Money | None = None
+    occasion: str | None = None
+    interests: list[str] = Field(default_factory=list)

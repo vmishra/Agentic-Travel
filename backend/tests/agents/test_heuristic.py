@@ -25,9 +25,19 @@ def test_heuristic_brief_extracts_nights_and_party() -> None:
     out, _ = HeuristicLlmClient().generate_structured(
         model="x", prompt="5 days in Goa for a couple, love beaches", schema=BriefExtract
     )
-    assert out.nights == 4  # 5 days -> 4 nights
+    assert out.nights == 5
     assert out.party_size == 2
     assert "beaches" in out.interests
+
+
+def test_heuristic_parses_explicit_dates_not_durations() -> None:
+    out, _ = HeuristicLlmClient().generate_structured(
+        model="x", prompt="5 days leaving 10 August 2026", schema=BriefExtract
+    )
+    from datetime import date
+
+    assert out.start_date == date(2026, 8, 10)  # "5 days" must not be read as a date
+    assert out.nights == 5
 
 
 def test_heuristic_end_to_end_produces_valid_itinerary() -> None:

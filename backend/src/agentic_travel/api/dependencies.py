@@ -11,6 +11,7 @@ from dataclasses import dataclass
 
 from agentic_travel.agents.coordinator import Coordinator, ModelConfig
 from agentic_travel.agents.heuristic import HeuristicLlmClient, HeuristicSynthesizer
+from agentic_travel.agents.models import ConversationState
 from agentic_travel.agents.synthesizer import (
     LlmSynthesizer,
     SynthesisStrategy,
@@ -38,6 +39,22 @@ class Services:
     visa: VisaService
     weather: WeatherService
     memory: MemoryService
+
+
+class ConversationStore:
+    """In-memory store of accumulated conversation state, keyed by session id."""
+
+    def __init__(self) -> None:
+        """Start with no sessions."""
+        self._states: dict[str, ConversationState] = {}
+
+    def get(self, session_id: str) -> ConversationState | None:
+        """Return the state for a session, or ``None`` if unseen."""
+        return self._states.get(session_id)
+
+    def put(self, session_id: str, state: ConversationState) -> None:
+        """Persist the state for a session."""
+        self._states[session_id] = state
 
 
 def build_services() -> Services:

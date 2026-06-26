@@ -15,6 +15,6 @@ def test_default_store_loads_and_traverses() -> None:
     assert city is not None
     assert city.name == "Mumbai"
     assert len(store.cities_in_country("ctry_in")) == 2
-    assert len(store.pois_in_city("city_goi")) == 2
+    assert len(store.pois_in_city("city_goi")) == 6
     flights = store.connections_from("city_bom", mode=TransportMode.FLIGHT)
     assert {e.target_id for e in flights} == {"city_goi", "city_dxb"}

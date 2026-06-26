@@ -19,6 +19,13 @@ class EnrichmentAgent(Agent):
 
     name = "enrichment"
 
+    def extract(self, query: str, *, model: str) -> BriefExtract:
+        """Extract raw slots from a single message via the model."""
+        result, _ = self._llm.generate_structured(
+            model=model, system=_SYSTEM, prompt=query, schema=BriefExtract
+        )
+        return result
+
     def run(
         self,
         intent: IntentResult,
@@ -28,25 +35,21 @@ class EnrichmentAgent(Agent):
     ) -> TripBrief:
         """Produce an enriched brief, applying profile defaults and gap-flagging."""
         with self._span():
-            extract, _ = self._llm.generate_structured(
-                model=model,
-                system=_SYSTEM,
-                prompt=intent.raw_query,
-                schema=BriefExtract,
-            )
-            return self._assemble(intent, extract, profile)
+            extract = self.extract(intent.raw_query, model=model)
+            return self.assemble(intent, extract, profile)
 
-    def _assemble(
+    def assemble(
         self,
         intent: IntentResult,
         extract: BriefExtract,
         profile: TravelerProfile | None,
     ) -> TripBrief:
+        """Combine an extract with the profile into a `TripBrief`."""
         destination = extract.destination_query or (intent.destination_hint or "")
         interests = list(
             dict.fromkeys([*(profile.interests if profile else []), *extract.interests])
         )
-        budget = self._resolve_budget(extract)
+        budget = self.resolve_budget(extract)
         clarifications = self._missing(destination, extract)
         return TripBrief(
             intent=intent.intent,
@@ -66,7 +69,8 @@ class EnrichmentAgent(Agent):
         )
 
     @staticmethod
-    def _resolve_budget(extract: BriefExtract) -> Money | None:
+    def resolve_budget(extract: BriefExtract) -> Money | None:
+        """Build a Money budget from the extracted amount and currency."""
         if extract.budget_amount is None:
             return None
         currency = Currency.INR

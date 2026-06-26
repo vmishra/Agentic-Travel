@@ -39,6 +39,24 @@ def test_plan_endpoint_produces_valid_itinerary() -> None:
     assert body["resolved_city_ids"] == ["city_goi"]
 
 
+def test_conversation_accumulates_across_turns() -> None:
+    client = _client()
+    session = "sess-test-1"
+    first = client.post(
+        "/plan",
+        json={"query": "I'd like to visit Goa", "traveler_id": "tr_arjun", "session_id": session},
+    ).json()
+    assert first["itinerary"] is None
+    assert "travel dates or duration" in first["brief"]["clarifications_needed"]
+
+    second = client.post(
+        "/plan",
+        json={"query": "make it 3 nights", "traveler_id": "tr_arjun", "session_id": session},
+    ).json()
+    assert second["itinerary"] is not None  # destination carried over from turn 1
+    assert second["resolved_city_ids"] == ["city_goi"]
+
+
 def test_plan_stream_emits_agui_events() -> None:
     response = _client().post(
         "/plan/stream", json={"query": "Plan 2 nights in Goa", "traveler_id": "tr_arjun"}

@@ -13,6 +13,7 @@ import re
 from datetime import date, time, timedelta
 from typing import TYPE_CHECKING, TypeVar, cast
 
+from dateutil import parser as date_parser
 from pydantic import BaseModel
 
 from agentic_travel.agents.intent import IntentOut
@@ -105,10 +106,12 @@ class HeuristicLlmClient(LlmClient):
     @staticmethod
     def _brief(prompt: str) -> BriefExtract:
         text = prompt.lower()
-        nights = _extract_nights(text)
-        # When a duration is given but no explicit date, assume a near-future
+        start, range_nights = _extract_dates(prompt)
+        nights = range_nights if range_nights is not None else _extract_nights(text)
+        # If a duration is given without an explicit date, assume a near-future
         # start so flights can be priced. Live reasoning extracts real dates.
-        start = date.today() + timedelta(days=30) if nights is not None else None
+        if start is None and nights is not None:
+            start = date.today() + timedelta(days=30)
         party = _extract_party(text)
         occasion = next(
             (o for o in ("anniversary", "honeymoon", "birthday", "wedding") if o in text), None
@@ -124,13 +127,43 @@ class HeuristicLlmClient(LlmClient):
         )
 
 
+_MONTH = r"(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*"
+_DATE_PHRASE = re.compile(
+    r"\b("
+    r"\d{4}-\d{1,2}-\d{1,2}"  # 2026-06-27
+    r"|\d{1,2}[/-]\d{1,2}[/-]\d{2,4}"  # 27/06/2026
+    rf"|\d{{1,2}}(?:st|nd|rd|th)?\s+{_MONTH}(?:\s+\d{{4}})?"  # 27th June 2026
+    rf"|{_MONTH}\s+\d{{1,2}}(?:st|nd|rd|th)?(?:,?\s+\d{{4}})?"  # June 27, 2026
+    r")\b",
+    re.IGNORECASE,
+)
+
+
+def _extract_dates(text: str) -> tuple[date | None, int | None]:
+    """Find date phrases; return (start_date, nights) where nights spans a range."""
+    found: list[date] = []
+    for match in _DATE_PHRASE.finditer(text):
+        # Strip ordinal suffixes that follow a number (27th -> 27) without
+        # touching month names like "August".
+        cleaned = re.sub(r"(\d{1,2})(?:st|nd|rd|th)", r"\1", match.group(0), flags=re.IGNORECASE)
+        try:
+            found.append(date_parser.parse(cleaned, fuzzy=True).date())
+        except (ValueError, OverflowError):
+            continue
+    if not found:
+        return None, None
+    found.sort()
+    start = found[0]
+    if len(found) >= 2 and found[-1] > start:
+        return start, (found[-1] - start).days
+    return start, None
+
+
 def _extract_nights(text: str) -> int | None:
-    match = re.search(r"(\d+)\s*nights?", text)
+    """Return trip length in itinerary-days from a "N nights/days" phrase."""
+    match = re.search(r"(\d+)\s*(?:nights?|nts?|days?|dys?)", text)
     if match:
-        return int(match.group(1))
-    match = re.search(r"(\d+)\s*days?", text)
-    if match:
-        return max(1, int(match.group(1)) - 1)
+        return max(1, int(match.group(1)))
     return None
 
 
@@ -192,9 +225,12 @@ class HeuristicSynthesizer:
         day_index = 1
         for city in context.cities:
             remaining: list[POI] = list(city.candidate_pois)
-            for _ in range(max(1, city.nights)):
+            city_days = max(1, city.nights)
+            # Spread POIs evenly so no day is left empty while others overflow.
+            per_day = min(len(_DAY_SLOTS), max(1, -(-len(remaining) // city_days)))
+            for _ in range(city_days):
                 when = base + timedelta(days=day_index - 1)
-                activities = self._fill_day(remaining, when.weekday())
+                activities = self._fill_day(remaining, when.weekday(), per_day)
                 days.append(
                     PlannedDay(
                         day_index=day_index,
@@ -207,9 +243,11 @@ class HeuristicSynthesizer:
         return days
 
     @staticmethod
-    def _fill_day(remaining: list[POI], weekday: int) -> list[PlannedActivity]:
+    def _fill_day(remaining: list[POI], weekday: int, target: int) -> list[PlannedActivity]:
         activities: list[PlannedActivity] = []
         for start, end in _DAY_SLOTS:
+            if len(activities) >= target:
+                break
             chosen = next(
                 (p for p in remaining if _slot_fits(p.opening_hours, weekday, start, end)), None
             )

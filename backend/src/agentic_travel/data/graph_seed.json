@@ -16,11 +16,32 @@
   ],
   "pois": [
     { "id": "poi_gateway_of_india", "name": "Gateway of India", "city_id": "city_bom", "location": { "lat": 18.9220, "lng": 72.8347 }, "category": "landmark", "typical_visit_minutes": 60, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.6, "opening_hours": { "opens": "06:00", "closes": "22:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["iconic", "waterfront"] },
-    { "id": "poi_marine_drive", "name": "Marine Drive", "city_id": "city_bom", "location": { "lat": 18.9438, "lng": 72.8231 }, "category": "landmark", "typical_visit_minutes": 45, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.5, "opening_hours": { "opens": "00:00", "closes": "23:59", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["promenade", "sunset"] },
+    { "id": "poi_marine_drive", "name": "Marine Drive", "city_id": "city_bom", "location": { "lat": 18.9438, "lng": 72.8231 }, "category": "landmark", "typical_visit_minutes": 45, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.5, "opening_hours": { "opens": "06:00", "closes": "23:30", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["promenade", "sunset"] },
+    { "id": "poi_elephanta_caves", "name": "Elephanta Caves", "city_id": "city_bom", "location": { "lat": 18.9633, "lng": 72.9315 }, "category": "museum", "typical_visit_minutes": 180, "ticket_price": { "amount": "600", "currency": "INR" }, "rating": 4.5, "opening_hours": { "opens": "09:00", "closes": "17:00", "days": [1, 2, 3, 4, 5, 6] }, "tags": ["heritage", "unesco", "island"] },
+    { "id": "poi_cst_station", "name": "Chhatrapati Shivaji Terminus", "city_id": "city_bom", "location": { "lat": 18.9398, "lng": 72.8355 }, "category": "landmark", "typical_visit_minutes": 45, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.6, "opening_hours": { "opens": "00:00", "closes": "23:59", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["heritage", "unesco", "architecture"] },
+    { "id": "poi_haji_ali_dargah", "name": "Haji Ali Dargah", "city_id": "city_bom", "location": { "lat": 18.9826, "lng": 72.8089 }, "category": "religious", "typical_visit_minutes": 60, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.5, "opening_hours": { "opens": "05:30", "closes": "22:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["heritage", "waterfront"] },
+    { "id": "poi_colaba_causeway", "name": "Colaba Causeway", "city_id": "city_bom", "location": { "lat": 18.9220, "lng": 72.8290 }, "category": "market", "typical_visit_minutes": 90, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.3, "opening_hours": { "opens": "10:00", "closes": "21:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["shopping", "street-food"] },
+
     { "id": "poi_baga_beach", "name": "Baga Beach", "city_id": "city_goi", "location": { "lat": 15.5553, "lng": 73.7517 }, "category": "beach", "typical_visit_minutes": 120, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.3, "opening_hours": { "opens": "06:00", "closes": "20:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["beach", "nightlife"] },
     { "id": "poi_basilica_bom_jesus", "name": "Basilica of Bom Jesus", "city_id": "city_goi", "location": { "lat": 15.5009, "lng": 73.9116 }, "category": "religious", "typical_visit_minutes": 60, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.6, "opening_hours": { "opens": "09:00", "closes": "18:30", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["heritage", "unesco"] },
+    { "id": "poi_fort_aguada", "name": "Fort Aguada", "city_id": "city_goi", "location": { "lat": 15.4926, "lng": 73.7740 }, "category": "landmark", "typical_visit_minutes": 75, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.4, "opening_hours": { "opens": "09:30", "closes": "18:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["heritage", "sea-view"] },
+    { "id": "poi_dudhsagar_falls", "name": "Dudhsagar Falls", "city_id": "city_goi", "location": { "lat": 15.3144, "lng": 74.3144 }, "category": "nature", "typical_visit_minutes": 240, "ticket_price": { "amount": "400", "currency": "INR" }, "rating": 4.6, "opening_hours": { "opens": "06:00", "closes": "17:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["waterfall", "trek", "adventure"] },
+    { "id": "poi_anjuna_market", "name": "Anjuna Flea Market", "city_id": "city_goi", "location": { "lat": 15.5870, "lng": 73.7440 }, "category": "market", "typical_visit_minutes": 90, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.2, "opening_hours": { "opens": "08:00", "closes": "18:00", "days": [2] }, "tags": ["shopping", "bohemian"] },
+    { "id": "poi_se_cathedral", "name": "Se Cathedral", "city_id": "city_goi", "location": { "lat": 15.5040, "lng": 73.9120 }, "category": "religious", "typical_visit_minutes": 45, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.5, "opening_hours": { "opens": "07:30", "closes": "18:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["heritage", "unesco"] },
+
     { "id": "poi_galle_face_green", "name": "Galle Face Green", "city_id": "city_cmb", "location": { "lat": 6.9244, "lng": 79.8438 }, "category": "landmark", "typical_visit_minutes": 60, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.3, "opening_hours": { "opens": "05:00", "closes": "22:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["oceanfront", "street-food"] },
-    { "id": "poi_burj_khalifa", "name": "Burj Khalifa", "city_id": "city_dxb", "location": { "lat": 25.1972, "lng": 55.2744 }, "category": "landmark", "typical_visit_minutes": 90, "ticket_price": { "amount": "169", "currency": "AED" }, "rating": 4.7, "opening_hours": { "opens": "09:00", "closes": "23:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["skyscraper", "observation-deck"] }
+    { "id": "poi_gangaramaya_temple", "name": "Gangaramaya Temple", "city_id": "city_cmb", "location": { "lat": 6.9165, "lng": 79.8563 }, "category": "religious", "typical_visit_minutes": 60, "ticket_price": { "amount": "300", "currency": "INR" }, "rating": 4.5, "opening_hours": { "opens": "06:00", "closes": "22:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["heritage", "buddhist"] },
+    { "id": "poi_pettah_market", "name": "Pettah Market", "city_id": "city_cmb", "location": { "lat": 6.9370, "lng": 79.8500 }, "category": "market", "typical_visit_minutes": 90, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.1, "opening_hours": { "opens": "08:00", "closes": "19:00", "days": [0, 1, 2, 3, 4, 5] }, "tags": ["bazaar", "local"] },
+    { "id": "poi_national_museum_colombo", "name": "Colombo National Museum", "city_id": "city_cmb", "location": { "lat": 6.9107, "lng": 79.8612 }, "category": "museum", "typical_visit_minutes": 120, "ticket_price": { "amount": "500", "currency": "INR" }, "rating": 4.4, "opening_hours": { "opens": "09:00", "closes": "18:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["history", "culture"] },
+    { "id": "poi_independence_square", "name": "Independence Square", "city_id": "city_cmb", "location": { "lat": 6.9061, "lng": 79.8689 }, "category": "landmark", "typical_visit_minutes": 45, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.5, "opening_hours": { "opens": "05:00", "closes": "21:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["monument", "park"] },
+    { "id": "poi_viharamahadevi_park", "name": "Viharamahadevi Park", "city_id": "city_cmb", "location": { "lat": 6.9148, "lng": 79.8607 }, "category": "nature", "typical_visit_minutes": 60, "ticket_price": { "amount": "0", "currency": "INR" }, "rating": 4.2, "opening_hours": { "opens": "06:00", "closes": "18:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["park", "family"] },
+
+    { "id": "poi_burj_khalifa", "name": "Burj Khalifa", "city_id": "city_dxb", "location": { "lat": 25.1972, "lng": 55.2744 }, "category": "landmark", "typical_visit_minutes": 90, "ticket_price": { "amount": "169", "currency": "AED" }, "rating": 4.7, "opening_hours": { "opens": "09:00", "closes": "23:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["skyscraper", "observation-deck"] },
+    { "id": "poi_dubai_mall", "name": "The Dubai Mall", "city_id": "city_dxb", "location": { "lat": 25.1985, "lng": 55.2796 }, "category": "market", "typical_visit_minutes": 150, "ticket_price": { "amount": "0", "currency": "AED" }, "rating": 4.6, "opening_hours": { "opens": "10:00", "closes": "24:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["shopping", "entertainment"] },
+    { "id": "poi_palm_jumeirah", "name": "Palm Jumeirah", "city_id": "city_dxb", "location": { "lat": 25.1124, "lng": 55.1390 }, "category": "landmark", "typical_visit_minutes": 120, "ticket_price": { "amount": "0", "currency": "AED" }, "rating": 4.5, "opening_hours": { "opens": "00:00", "closes": "23:59", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["iconic", "beach"] },
+    { "id": "poi_dubai_fountain", "name": "The Dubai Fountain", "city_id": "city_dxb", "location": { "lat": 25.1955, "lng": 55.2747 }, "category": "entertainment", "typical_visit_minutes": 45, "ticket_price": { "amount": "0", "currency": "AED" }, "rating": 4.7, "opening_hours": { "opens": "18:00", "closes": "23:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["show", "evening"] },
+    { "id": "poi_gold_souk", "name": "Gold Souk", "city_id": "city_dxb", "location": { "lat": 25.2697, "lng": 55.2970 }, "category": "market", "typical_visit_minutes": 75, "ticket_price": { "amount": "0", "currency": "AED" }, "rating": 4.3, "opening_hours": { "opens": "10:00", "closes": "22:00", "days": [0, 1, 2, 3, 4, 5, 6] }, "tags": ["bazaar", "shopping"] },
+    { "id": "poi_jumeirah_mosque", "name": "Jumeirah Mosque", "city_id": "city_dxb", "location": { "lat": 25.2330, "lng": 55.2660 }, "category": "religious", "typical_visit_minutes": 60, "ticket_price": { "amount": "35", "currency": "AED" }, "rating": 4.6, "opening_hours": { "opens": "09:00", "closes": "17:00", "days": [0, 1, 2, 3, 5, 6] }, "tags": ["heritage", "architecture"] }
   ],
   "edges": [
     { "source_id": "reg_south_asia", "target_id": "ctry_in", "kind": "contains" },
@@ -30,13 +51,40 @@
     { "source_id": "ctry_in", "target_id": "city_goi", "kind": "contains" },
     { "source_id": "ctry_lk", "target_id": "city_cmb", "kind": "contains" },
     { "source_id": "ctry_ae", "target_id": "city_dxb", "kind": "contains" },
+
     { "source_id": "city_bom", "target_id": "poi_gateway_of_india", "kind": "contains" },
     { "source_id": "city_bom", "target_id": "poi_marine_drive", "kind": "contains" },
+    { "source_id": "city_bom", "target_id": "poi_elephanta_caves", "kind": "contains" },
+    { "source_id": "city_bom", "target_id": "poi_cst_station", "kind": "contains" },
+    { "source_id": "city_bom", "target_id": "poi_haji_ali_dargah", "kind": "contains" },
+    { "source_id": "city_bom", "target_id": "poi_colaba_causeway", "kind": "contains" },
+
     { "source_id": "city_goi", "target_id": "poi_baga_beach", "kind": "contains" },
     { "source_id": "city_goi", "target_id": "poi_basilica_bom_jesus", "kind": "contains" },
+    { "source_id": "city_goi", "target_id": "poi_fort_aguada", "kind": "contains" },
+    { "source_id": "city_goi", "target_id": "poi_dudhsagar_falls", "kind": "contains" },
+    { "source_id": "city_goi", "target_id": "poi_anjuna_market", "kind": "contains" },
+    { "source_id": "city_goi", "target_id": "poi_se_cathedral", "kind": "contains" },
+
     { "source_id": "city_cmb", "target_id": "poi_galle_face_green", "kind": "contains" },
+    { "source_id": "city_cmb", "target_id": "poi_gangaramaya_temple", "kind": "contains" },
+    { "source_id": "city_cmb", "target_id": "poi_pettah_market", "kind": "contains" },
+    { "source_id": "city_cmb", "target_id": "poi_national_museum_colombo", "kind": "contains" },
+    { "source_id": "city_cmb", "target_id": "poi_independence_square", "kind": "contains" },
+    { "source_id": "city_cmb", "target_id": "poi_viharamahadevi_park", "kind": "contains" },
+
     { "source_id": "city_dxb", "target_id": "poi_burj_khalifa", "kind": "contains" },
+    { "source_id": "city_dxb", "target_id": "poi_dubai_mall", "kind": "contains" },
+    { "source_id": "city_dxb", "target_id": "poi_palm_jumeirah", "kind": "contains" },
+    { "source_id": "city_dxb", "target_id": "poi_dubai_fountain", "kind": "contains" },
+    { "source_id": "city_dxb", "target_id": "poi_gold_souk", "kind": "contains" },
+    { "source_id": "city_dxb", "target_id": "poi_jumeirah_mosque", "kind": "contains" },
+
     { "source_id": "city_bom", "target_id": "city_goi", "kind": "connected_by", "distance_km": 590.0, "mode": "flight", "duration_minutes": 90 },
-    { "source_id": "city_bom", "target_id": "city_dxb", "kind": "connected_by", "distance_km": 1930.0, "mode": "flight", "duration_minutes": 195 }
+    { "source_id": "city_bom", "target_id": "city_dxb", "kind": "connected_by", "distance_km": 1930.0, "mode": "flight", "duration_minutes": 195 },
+    { "source_id": "city_bom", "target_id": "city_cmb", "kind": "connected_by", "distance_km": 1530.0, "mode": "flight", "duration_minutes": 150 },
+    { "source_id": "city_goi", "target_id": "city_dxb", "kind": "connected_by", "distance_km": 2000.0, "mode": "flight", "duration_minutes": 210 },
+    { "source_id": "city_goi", "target_id": "city_cmb", "kind": "connected_by", "distance_km": 980.0, "mode": "flight", "duration_minutes": 120 },
+    { "source_id": "city_cmb", "target_id": "city_dxb", "kind": "connected_by", "distance_km": 3450.0, "mode": "flight", "duration_minutes": 285 }
   ]
 }

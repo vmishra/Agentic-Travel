@@ -107,7 +107,7 @@ def test_missing_destination_asks_for_clarification() -> None:
     assert "destination" in result.brief.clarifications_needed
 
 
-def test_unresolved_destination_reports_error() -> None:
+def test_unresolved_destination_asks_for_clarification() -> None:
     fake = FakeLlmClient(
         objects=[
             IntentOut(intent=TripIntent.ITINERARY, confidence=0.8, destination_hint="Atlantis"),
@@ -116,4 +116,33 @@ def test_unresolved_destination_reports_error() -> None:
     )
     result = _coordinator(fake).plan_itinerary("2 nights in Atlantis", traveler_id="tr_arjun")
     assert result.itinerary is None
-    assert any(i.code == "unresolved_destination" for i in result.validation.issues)
+    assert "destination" in result.brief.clarifications_needed
+
+
+def test_multi_turn_accumulates_destination_then_dates() -> None:
+    coordinator = _coordinator(
+        FakeLlmClient(
+            objects=[
+                # Turn 1: destination only, no dates.
+                IntentOut(intent=TripIntent.ITINERARY, confidence=0.7, destination_hint="Goa"),
+                BriefExtract(destination_query="Goa"),
+                # Turn 2: duration only, no destination text.
+                IntentOut(intent=TripIntent.ITINERARY, confidence=0.7),
+                BriefExtract(destination_query="2 nights", nights=2),
+                SynthesisPlan(
+                    title="Goa", summary="x", days=[_day(*_GOOD_ACTIVITIES)]
+                ),
+            ]
+        )
+    )
+    first = coordinator.plan_itinerary("I'd like to visit Goa", traveler_id="tr_arjun")
+    assert first.itinerary is None
+    assert "travel dates or duration" in first.brief.clarifications_needed
+
+    # The destination from turn 1 must carry into turn 2 via the returned state.
+    second = coordinator.plan_itinerary(
+        "make it 2 nights", traveler_id="tr_arjun", state=first.conversation
+    )
+    assert second.itinerary is not None
+    assert second.resolved_city_ids == ["city_goi"]
+    assert second.conversation.nights == 2

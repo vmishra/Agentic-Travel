@@ -11,6 +11,7 @@ from agentic_travel.agents.heuristic import HeuristicLlmClient, HeuristicSynthes
 from agentic_travel.agents.intent import IntentAgent, IntentOut
 from agentic_travel.agents.models import (
     BriefExtract,
+    ConversationState,
     IntentResult,
     TripBrief,
     TripIntent,
@@ -31,6 +32,7 @@ from agentic_travel.agents.synthesizer import (
 __all__ = [
     "BriefExtract",
     "CityOptions",
+    "ConversationState",
     "Coordinator",
     "DestinationResolver",
     "EnrichmentAgent",

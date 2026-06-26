@@ -15,18 +15,19 @@ from pydantic import BaseModel, Field
 from agentic_travel.agents.destination import DestinationResolver
 from agentic_travel.agents.enrichment import EnrichmentAgent
 from agentic_travel.agents.intent import IntentAgent
-from agentic_travel.agents.models import TripBrief
+from agentic_travel.agents.models import (
+    BriefExtract,
+    ConversationState,
+    IntentResult,
+    TripBrief,
+)
 from agentic_travel.agents.planning import OptionsGatherer, PlanningContext
 from agentic_travel.agents.synthesizer import ItineraryAssembler, SynthesisStrategy
 from agentic_travel.domain.money import Money
+from agentic_travel.domain.traveler import BudgetTier, FoodPreference, TravelerProfile
 from agentic_travel.graph.store import GraphStore
 from agentic_travel.itinerary.models import Itinerary
-from agentic_travel.itinerary.validation import (
-    IssueSeverity,
-    ValidationIssue,
-    ValidationReport,
-    validate_itinerary,
-)
+from agentic_travel.itinerary.validation import ValidationReport, validate_itinerary
 from agentic_travel.llm.client import LlmClient
 from agentic_travel.observability.span import SpanKind
 from agentic_travel.observability.tracer import Tracer
@@ -52,6 +53,7 @@ class PlanningResult(BaseModel):
     validation: ValidationReport = Field(default_factory=ValidationReport)
     resolved_city_ids: list[str] = Field(default_factory=list)
     attempts: int = 0
+    conversation: ConversationState = Field(default_factory=ConversationState)
 
 
 class Coordinator:
@@ -95,45 +97,88 @@ class Coordinator:
             with self._tracer.span(name, kind):
                 yield
 
-    def plan_itinerary(self, query: str, *, traveler_id: str | None = None) -> PlanningResult:
-        """Plan a bookable itinerary for a free-text request."""
+    def plan_itinerary(
+        self,
+        query: str,
+        *,
+        traveler_id: str | None = None,
+        state: ConversationState | None = None,
+    ) -> PlanningResult:
+        """Plan a bookable itinerary, accumulating slots across conversation turns."""
+        state = state.model_copy(deep=True) if state else ConversationState()
         with self._span("coordinator"):
             intent = self._intent.run(query, model=self._models.fast)
             profile = self._memory.get_profile(traveler_id) if traveler_id else None
-            brief = self._enrich.run(intent, profile, model=self._models.fast)
+            with self._span("enrichment"):
+                extract = self._enrich.extract(query, model=self._models.fast)
+            self._merge(state, extract)
+            brief = self._build_brief(intent, state, profile)
 
             if brief.clarifications_needed:
-                return PlanningResult(brief=brief)
-
-            city_ids = self._resolver.resolve(brief.destination_query)
-            if not city_ids:
-                return PlanningResult(
-                    brief=brief,
-                    validation=ValidationReport(
-                        issues=[
-                            ValidationIssue(
-                                severity=IssueSeverity.ERROR,
-                                code="unresolved_destination",
-                                message=(
-                                    f"Could not match '{brief.destination_query}' to a known "
-                                    "destination."
-                                ),
-                            )
-                        ]
-                    ),
-                )
+                return PlanningResult(brief=brief, conversation=state)
 
             with self._span("specialists"):
-                context = self._gatherer.gather(brief, city_ids)
+                context = self._gatherer.gather(brief, state.destination_city_ids)
 
             itinerary, report, attempts = self._synthesize_with_repair(context)
             return PlanningResult(
                 brief=brief,
                 itinerary=itinerary,
                 validation=report,
-                resolved_city_ids=city_ids,
+                resolved_city_ids=state.destination_city_ids,
                 attempts=attempts,
+                conversation=state,
             )
+
+    def _merge(self, state: ConversationState, extract: BriefExtract) -> None:
+        """Fold a message's extracted slots into the accumulated state."""
+        cities = self._resolver.resolve(extract.destination_query)
+        if cities:
+            state.destination_city_ids = cities
+        if extract.start_date is not None:
+            state.start_date = extract.start_date
+        if extract.nights is not None:
+            state.nights = extract.nights
+        if extract.party_size is not None:
+            state.party_size = extract.party_size
+        budget = self._enrich.resolve_budget(extract)
+        if budget is not None:
+            state.budget = budget
+        if extract.occasion:
+            state.occasion = extract.occasion
+        if extract.interests:
+            state.interests = list(dict.fromkeys([*state.interests, *extract.interests]))
+
+    @staticmethod
+    def _build_brief(
+        intent: IntentResult,
+        state: ConversationState,
+        profile: TravelerProfile | None,
+    ) -> TripBrief:
+        missing: list[str] = []
+        if not state.destination_city_ids:
+            missing.append("destination")
+        if state.nights is None and state.start_date is None:
+            missing.append("travel dates or duration")
+        interests = list(
+            dict.fromkeys([*(profile.interests if profile else []), *state.interests])
+        )
+        return TripBrief(
+            intent=intent.intent,
+            traveler_id=profile.traveler_id if profile else None,
+            passport_country=profile.passport_country if profile else "IN",
+            origin_city_id=profile.home_city_id if profile else None,
+            destination_query=", ".join(state.destination_city_ids),
+            start_date=state.start_date,
+            nights=state.nights,
+            party_size=state.party_size or 1,
+            budget=state.budget,
+            budget_tier=profile.budget_tier if profile else BudgetTier.MID_RANGE,
+            food_preference=profile.food_preference if profile else FoodPreference.NONE,
+            interests=interests,
+            occasion=state.occasion,
+            clarifications_needed=missing,
+        )
 
     def _synthesize_with_repair(
         self, context: PlanningContext

@@ -11,7 +11,12 @@ from pydantic import BaseModel
 
 from agentic_travel.agents.coordinator import PlanningResult
 from agentic_travel.api.agui import plan_event_stream
-from agentic_travel.api.dependencies import PlannerFactory, Services, build_services
+from agentic_travel.api.dependencies import (
+    ConversationStore,
+    PlannerFactory,
+    Services,
+    build_services,
+)
 from agentic_travel.config.settings import Settings, get_settings
 from agentic_travel.domain.traveler import TravelerProfile
 from agentic_travel.observability.tracer import Tracer
@@ -24,6 +29,7 @@ class PlanRequest(BaseModel):
 
     query: str
     traveler_id: str | None = None
+    session_id: str | None = None
 
 
 class HealthResponse(BaseModel):
@@ -39,6 +45,7 @@ def create_app(settings: Settings | None = None, services: Services | None = Non
     settings = settings or get_settings()
     services = services or build_services()
     factory = PlannerFactory(settings, services)
+    conversations = ConversationStore()
 
     app = FastAPI(title="Agentic Travel API", version="0.1.0")
     app.add_middleware(
@@ -59,17 +66,27 @@ def create_app(settings: Settings | None = None, services: Services | None = Non
 
     @app.post("/plan")
     def plan(request: PlanRequest) -> PlanningResult:
+        session_id = request.session_id or uuid.uuid4().hex
         coordinator = factory.build(Tracer())
-        return coordinator.plan_itinerary(request.query, traveler_id=request.traveler_id)
+        result = coordinator.plan_itinerary(
+            request.query,
+            traveler_id=request.traveler_id,
+            state=conversations.get(session_id),
+        )
+        conversations.put(session_id, result.conversation)
+        return result
 
     @app.post("/plan/stream")
     def plan_stream(request: PlanRequest) -> StreamingResponse:
+        session_id = request.session_id or uuid.uuid4().hex
         stream = plan_event_stream(
             factory,
             query=request.query,
             traveler_id=request.traveler_id,
-            thread_id=uuid.uuid4().hex,
+            state=conversations.get(session_id),
+            thread_id=session_id,
             run_id=uuid.uuid4().hex,
+            persist=lambda state: conversations.put(session_id, state),
         )
         return StreamingResponse(stream, media_type="text/event-stream")
 

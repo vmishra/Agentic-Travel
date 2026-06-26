@@ -1,63 +1,16 @@
 {
   "routes": [
-    {
-      "origin_city_id": "city_bom",
-      "destination_city_id": "city_goi",
-      "currency": "INR",
-      "base_saver_fare": "3200",
-      "duration_minutes": 90,
-      "carriers": [
-        { "code": "6E", "name": "IndiGo" },
-        { "code": "AI", "name": "Air India" },
-        { "code": "UK", "name": "Vistara" }
-      ]
-    },
-    {
-      "origin_city_id": "city_goi",
-      "destination_city_id": "city_bom",
-      "currency": "INR",
-      "base_saver_fare": "3300",
-      "duration_minutes": 90,
-      "carriers": [
-        { "code": "6E", "name": "IndiGo" },
-        { "code": "AI", "name": "Air India" },
-        { "code": "UK", "name": "Vistara" }
-      ]
-    },
-    {
-      "origin_city_id": "city_bom",
-      "destination_city_id": "city_dxb",
-      "currency": "INR",
-      "base_saver_fare": "14500",
-      "duration_minutes": 195,
-      "carriers": [
-        { "code": "EK", "name": "Emirates" },
-        { "code": "6E", "name": "IndiGo" },
-        { "code": "AI", "name": "Air India" }
-      ]
-    },
-    {
-      "origin_city_id": "city_dxb",
-      "destination_city_id": "city_bom",
-      "currency": "AED",
-      "base_saver_fare": "650",
-      "duration_minutes": 200,
-      "carriers": [
-        { "code": "EK", "name": "Emirates" },
-        { "code": "6E", "name": "IndiGo" },
-        { "code": "AI", "name": "Air India" }
-      ]
-    },
-    {
-      "origin_city_id": "city_bom",
-      "destination_city_id": "city_cmb",
-      "currency": "INR",
-      "base_saver_fare": "11200",
-      "duration_minutes": 150,
-      "carriers": [
-        { "code": "UL", "name": "SriLankan Airlines" },
-        { "code": "AI", "name": "Air India" }
-      ]
-    }
+    { "origin_city_id": "city_bom", "destination_city_id": "city_goi", "currency": "INR", "base_saver_fare": "3200", "duration_minutes": 90, "carriers": [ { "code": "6E", "name": "IndiGo" }, { "code": "AI", "name": "Air India" }, { "code": "UK", "name": "Vistara" } ] },
+    { "origin_city_id": "city_goi", "destination_city_id": "city_bom", "currency": "INR", "base_saver_fare": "3300", "duration_minutes": 90, "carriers": [ { "code": "6E", "name": "IndiGo" }, { "code": "AI", "name": "Air India" }, { "code": "UK", "name": "Vistara" } ] },
+    { "origin_city_id": "city_bom", "destination_city_id": "city_dxb", "currency": "INR", "base_saver_fare": "14500", "duration_minutes": 195, "carriers": [ { "code": "EK", "name": "Emirates" }, { "code": "6E", "name": "IndiGo" }, { "code": "AI", "name": "Air India" } ] },
+    { "origin_city_id": "city_dxb", "destination_city_id": "city_bom", "currency": "AED", "base_saver_fare": "650", "duration_minutes": 200, "carriers": [ { "code": "EK", "name": "Emirates" }, { "code": "6E", "name": "IndiGo" }, { "code": "AI", "name": "Air India" } ] },
+    { "origin_city_id": "city_bom", "destination_city_id": "city_cmb", "currency": "INR", "base_saver_fare": "11200", "duration_minutes": 150, "carriers": [ { "code": "UL", "name": "SriLankan Airlines" }, { "code": "AI", "name": "Air India" } ] },
+    { "origin_city_id": "city_cmb", "destination_city_id": "city_bom", "currency": "INR", "base_saver_fare": "11800", "duration_minutes": 150, "carriers": [ { "code": "UL", "name": "SriLankan Airlines" }, { "code": "AI", "name": "Air India" } ] },
+    { "origin_city_id": "city_goi", "destination_city_id": "city_dxb", "currency": "INR", "base_saver_fare": "16500", "duration_minutes": 210, "carriers": [ { "code": "EK", "name": "Emirates" }, { "code": "6E", "name": "IndiGo" } ] },
+    { "origin_city_id": "city_dxb", "destination_city_id": "city_goi", "currency": "AED", "base_saver_fare": "720", "duration_minutes": 215, "carriers": [ { "code": "EK", "name": "Emirates" }, { "code": "6E", "name": "IndiGo" } ] },
+    { "origin_city_id": "city_goi", "destination_city_id": "city_cmb", "currency": "INR", "base_saver_fare": "9200", "duration_minutes": 120, "carriers": [ { "code": "UL", "name": "SriLankan Airlines" }, { "code": "AI", "name": "Air India" } ] },
+    { "origin_city_id": "city_cmb", "destination_city_id": "city_goi", "currency": "INR", "base_saver_fare": "9600", "duration_minutes": 120, "carriers": [ { "code": "UL", "name": "SriLankan Airlines" }, { "code": "AI", "name": "Air India" } ] },
+    { "origin_city_id": "city_cmb", "destination_city_id": "city_dxb", "currency": "USD", "base_saver_fare": "210", "duration_minutes": 285, "carriers": [ { "code": "UL", "name": "SriLankan Airlines" }, { "code": "EK", "name": "Emirates" } ] },
+    { "origin_city_id": "city_dxb", "destination_city_id": "city_cmb", "currency": "AED", "base_saver_fare": "830", "duration_minutes": 285, "carriers": [ { "code": "EK", "name": "Emirates" }, { "code": "UL", "name": "SriLankan Airlines" } ] }
   ]
 }

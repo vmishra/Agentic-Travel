@@ -60,7 +60,7 @@ async def test_weather_server_brief() -> None:
 
 async def test_poi_graph_server_traversal() -> None:
     pois = await _call(poi_graph, "pois_in_city", {"city_id": "city_goi"})
-    assert len(pois) == 2
+    assert len(pois) == 6
     cities = await _call(poi_graph, "cities_in_country", {"country_id": "ctry_in"})
     assert {c["id"] for c in cities} == {"city_bom", "city_goi"}
 
