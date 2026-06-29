@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-import type { Activity, Itinerary, Money, PlanningResult } from "@/lib/types";
+import type { Activity, DiningPick, Itinerary, Money, PlanningResult } from "@/lib/types";
 import {
   formatDateRange,
   formatDayDate,
@@ -131,6 +131,24 @@ function Stop({ activity }: { activity: Activity }) {
   );
 }
 
+function DiningRow({ pick }: { pick: DiningPick }) {
+  return (
+    <div className="dine">
+      <div className="dine__meal">{pick.meal}</div>
+      <div>
+        <div className="dine__name">
+          {pick.name}
+          <span className="dine__cuisine">
+            {pick.cuisine}
+            {pick.neighborhood ? ` · ${pick.neighborhood}` : ""}
+          </span>
+        </div>
+        {pick.why && <div className="dine__why">{pick.why}</div>}
+      </div>
+    </div>
+  );
+}
+
 function BudgetBar({ label, amount, total }: { label: string; amount: Money; total: number }) {
   const pct = total > 0 ? (Number(amount.amount) / total) * 100 : 0;
   return (
@@ -235,6 +253,7 @@ export function ItineraryView({ result }: { result: PlanningResult }) {
                 <span className="chapter__no">Day {day.day_index}</span>
                 <span className="chapter__date">{formatDayDate(day.date)}</span>
               </div>
+              {day.theme && <div className="chapter__theme">{day.theme}</div>}
               {day.activities.length === 0 && (
                 <div className="dayfree">A free day to wander at your own pace.</div>
               )}
@@ -247,11 +266,22 @@ export function ItineraryView({ result }: { result: PlanningResult }) {
                     {newPart && <div className="daypart__label">{part}</div>}
                     <Stop activity={a} />
                     {a.travel_minutes_to_next != null && (
-                      <div className="leg">≈ {a.travel_minutes_to_next} min to the next stop</div>
+                      <div className="leg">
+                        ≈ {a.travel_minutes_to_next} min
+                        {a.travel_mode_to_next ? ` by ${a.travel_mode_to_next}` : ""} to the next stop
+                      </div>
                     )}
                   </Fragment>
                 );
               })}
+              {day.dining.length > 0 && (
+                <div className="dining">
+                  <div className="dining__label">Where to eat</div>
+                  {day.dining.map((d, i) => (
+                    <DiningRow pick={d} key={i} />
+                  ))}
+                </div>
+              )}
             </div>
           );
         })}
@@ -290,6 +320,24 @@ export function ItineraryView({ result }: { result: PlanningResult }) {
             <div>
               <div className="note__label">Season &amp; weather</div>
               <div className="note__body">{it.season_note}</div>
+            </div>
+          )}
+          {it.getting_around && (
+            <div>
+              <div className="note__label">Getting around</div>
+              <div className="note__body">{it.getting_around}</div>
+            </div>
+          )}
+          {it.events.length > 0 && (
+            <div>
+              <div className="note__label">While you&apos;re there</div>
+              <div className="note__body">
+                {it.events.map((e, i) => (
+                  <p className="event" key={i}>
+                    <strong>{e.name}.</strong> {e.blurb}
+                  </p>
+                ))}
+              </div>
             </div>
           )}
           {it.visa.map((v, i) => (

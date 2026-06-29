@@ -80,7 +80,23 @@ export interface Activity {
   rating: number | null;
   estimated_cost: Money | null;
   travel_minutes_to_next: number | null;
+  travel_mode_to_next: string | null;
   notes: string;
+}
+
+export interface DiningPick {
+  name: string;
+  cuisine: string;
+  neighborhood: string;
+  meal: string;
+  price_tier: string;
+  why: string;
+  rating: number | null;
+}
+
+export interface TripEvent {
+  name: string;
+  blurb: string;
 }
 
 export interface CostBreakdown {
@@ -97,7 +113,9 @@ export interface DayPlan {
   day_index: number;
   date: string;
   city_id: string;
+  theme: string;
   activities: Activity[];
+  dining: DiningPick[];
   notes: string;
 }
 
@@ -119,6 +137,8 @@ export interface Itinerary {
   style_tags: string[];
   highlights: string[];
   season_note: string | null;
+  getting_around: string | null;
+  events: TripEvent[];
   cost_breakdown: CostBreakdown | null;
 }
 

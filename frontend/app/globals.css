@@ -785,6 +785,81 @@ button {
   color: var(--text-muted);
 }
 
+.chapter__theme {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+/* Dining within a day */
+.dining {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.dining__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.dine {
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 18px;
+  padding: 9px 0;
+}
+
+.dine__meal {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  padding-top: 4px;
+}
+
+.dine__name {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--text);
+}
+
+.dine__cuisine {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  margin-left: 11px;
+}
+
+.dine__why {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.event {
+  margin-bottom: 9px;
+}
+
+.event:last-child {
+  margin-bottom: 0;
+}
+
+.event strong {
+  color: var(--accent);
+  font-weight: 400;
+}
+
 /* Budget */
 .budget {
   display: grid;
