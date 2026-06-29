@@ -242,7 +242,7 @@ export default function Page() {
                 <span className="tab__count">{spans.length}</span>
               </button>
             </div>
-            <div className="canvas__body">
+            <div className="canvas__body grain">
               {view === "itinerary" ? (
                 result ? (
                   <ItineraryView result={result} />
@@ -255,8 +255,8 @@ export default function Page() {
                       plan, and the details that matter.
                       <br />
                       <br />
-                      Covering Goa, Mumbai, Dubai, Colombo, Singapore, Tokyo,
-                      Paris, London, New York &amp; San Francisco.
+                      Covering Goa, Mumbai, Dubai, Colombo, Singapore, Tokyo, Paris,
+                      London, New York &amp; San Francisco.
                     </p>
                   </div>
                 )

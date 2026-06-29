@@ -1,24 +1,20 @@
 import type { Metadata } from "next";
-import { Inter, Newsreader } from "next/font/google";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
+import { Fraunces } from "next/font/google";
 import "./globals.css";
 
-const display = Newsreader({
+const display = Fraunces({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
+  axes: ["opsz", "SOFT"],
   variable: "--font-display",
 });
 
-const body = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-body",
-});
-
 export const metadata: Metadata = {
-  title: "Agentic Travel — a considered way to plan",
+  title: "Agentic Travel — a private travel concierge",
   description:
-    "A concierge that composes bookable, personalized itineraries — flights, stays, visas, and a day-by-day plan — with the work shown.",
+    "A concierge that composes bookable, considered itineraries — flights, stays, dining, day-by-day, with the work shown.",
 };
 
 export default function RootLayout({
@@ -27,7 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable}`}>
+    <html
+      lang="en"
+      data-theme="dark"
+      className={`${GeistSans.variable} ${GeistMono.variable} ${display.variable}`}
+    >
       <body>{children}</body>
     </html>
   );
