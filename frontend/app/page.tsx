@@ -2,12 +2,18 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+import { ArchitectureView } from "@/components/ArchitectureView";
 import { ItineraryView } from "@/components/ItineraryView";
 import { TraceView } from "@/components/TraceView";
-import { fetchHealth, fetchPersonas, type Health } from "@/lib/api";
+import { fetchArchitecture, fetchHealth, fetchPersonas, type Health } from "@/lib/api";
 import { streamPlan } from "@/lib/agui";
 import { formatCost, formatMoney, formatMs } from "@/lib/format";
-import type { PlanningResult, SpanMetrics, TravelerProfile } from "@/lib/types";
+import type {
+  Architecture,
+  PlanningResult,
+  SpanMetrics,
+  TravelerProfile,
+} from "@/lib/types";
 
 interface Message {
   role: "user" | "agent" | "system";
@@ -27,6 +33,7 @@ export default function Page() {
   const [personas, setPersonas] = useState<TravelerProfile[]>([]);
   const [personaId, setPersonaId] = useState<string | null>(null);
   const [health, setHealth] = useState<Health | null>(null);
+  const [architecture, setArchitecture] = useState<Architecture | null>(null);
 
   const [messages, setMessages] = useState<Message[]>([
     { role: "system", text: "Pick a traveler, then describe the trip you want." },
@@ -63,6 +70,9 @@ export default function Page() {
       .catch(() => undefined);
     fetchHealth()
       .then(setHealth)
+      .catch(() => undefined);
+    fetchArchitecture()
+      .then(setArchitecture)
       .catch(() => undefined);
   }, []);
 
@@ -261,12 +271,29 @@ export default function Page() {
                   </div>
                 )
               ) : (
-                <TraceView
-                  spans={spans}
-                  activeSteps={activeSteps}
-                  selectedId={selectedSpanId}
-                  onSelect={setSelectedSpanId}
-                />
+                <div className="technical">
+                  {architecture && (
+                    <ArchitectureView
+                      architecture={architecture}
+                      activeSteps={activeSteps}
+                    />
+                  )}
+                  <div className="technical__trace">
+                    <div className="technical__tracehead">
+                      <span className="arch__kicker">The run trace</span>
+                      <p className="arch__lead">
+                        Each step from the most recent plan, with its latency, tokens,
+                        and cost.
+                      </p>
+                    </div>
+                    <TraceView
+                      spans={spans}
+                      activeSteps={activeSteps}
+                      selectedId={selectedSpanId}
+                      onSelect={setSelectedSpanId}
+                    />
+                  </div>
+                </div>
               )}
             </div>
           </div>

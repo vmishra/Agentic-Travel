@@ -191,6 +191,35 @@ export interface TravelerProfile {
   interests: string[];
 }
 
+export type NodeKind = "coordinator" | "agent" | "tool" | "model" | "critic";
+
+export interface ArchNode {
+  id: string;
+  label: string;
+  kind: NodeKind;
+  runtime: string;
+  model: string | null;
+  summary: string;
+  detail: string;
+  io: string[];
+  step_match: string[];
+  children: ArchNode[];
+}
+
+export interface ProtocolInfo {
+  key: string;
+  name: string;
+  role: string;
+}
+
+export interface Architecture {
+  root: ArchNode;
+  live: boolean;
+  model_fast: string;
+  model_planner: string;
+  protocols: ProtocolInfo[];
+}
+
 export type SpanKind = "agent" | "tool" | "model" | "mcp" | "internal";
 
 export interface SpanMetrics {

@@ -1,4 +1,4 @@
-import type { TravelerProfile } from "./types";
+import type { Architecture, TravelerProfile } from "./types";
 
 export const API_BASE =
   process.env.NEXT_PUBLIC_API_BASE ?? "http://localhost:8000";
@@ -18,5 +18,11 @@ export async function fetchHealth(): Promise<Health> {
 export async function fetchPersonas(): Promise<TravelerProfile[]> {
   const response = await fetch(`${API_BASE}/personas`);
   if (!response.ok) throw new Error(`could not load personas: ${response.status}`);
+  return response.json();
+}
+
+export async function fetchArchitecture(): Promise<Architecture> {
+  const response = await fetch(`${API_BASE}/introspect`);
+  if (!response.ok) throw new Error(`could not load architecture: ${response.status}`);
   return response.json();
 }

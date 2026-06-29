@@ -1021,6 +1021,306 @@ button {
 
 /* ─── Trace ──────────────────────────────────────────────────────────────── */
 
+/* ─── Architecture view ──────────────────────────────────────────────────── */
+.technical {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.technical__trace {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.technical__tracehead {
+  margin-bottom: 20px;
+}
+
+.arch__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  margin-bottom: 28px;
+}
+
+.arch__kicker {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.arch__lead {
+  margin: 8px 0 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 52ch;
+}
+
+.arch__path {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.arch__pathlabel {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.arch__pathval {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--text);
+  margin-top: 2px;
+}
+
+.arch__models {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-subtle);
+  margin-top: 4px;
+}
+
+.arch__grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 26px;
+  align-items: start;
+}
+
+.archtree {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.archnode {
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  align-items: start;
+  gap: 12px;
+  padding: 12px 15px;
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--border-strong);
+  border-radius: var(--r-sm);
+  background: var(--elev-1);
+  text-align: left;
+  transition: border-color 0.18s, transform 0.18s, background 0.18s;
+}
+
+.archnode:hover {
+  border-color: var(--border-strong);
+  transform: translateX(2px);
+}
+
+.archnode--coordinator,
+.archnode--agent {
+  border-left-color: var(--accent);
+}
+
+.archnode--tool {
+  border-left-color: var(--trace);
+}
+
+.archnode--model {
+  border-left-color: oklch(72% 0.12 310);
+}
+
+.archnode--critic {
+  border-left-color: oklch(74% 0.11 160);
+}
+
+.archnode--selected {
+  background: var(--elev-2);
+  border-color: var(--border-strong);
+}
+
+.archnode--active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent-soft), 0 0 26px -8px var(--accent);
+  animation: archpulse 1.4s ease-in-out infinite;
+}
+
+@keyframes archpulse {
+  0%, 100% {
+    box-shadow: 0 0 0 1px var(--accent-soft), 0 0 24px -10px var(--accent);
+  }
+  50% {
+    box-shadow: 0 0 0 1px var(--accent-hairline), 0 0 30px -4px var(--accent);
+  }
+}
+
+.archnode__glyph {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-subtle);
+}
+
+.archnode--coordinator .archnode__glyph,
+.archnode--agent .archnode__glyph {
+  color: var(--accent);
+}
+
+.archnode--tool .archnode__glyph {
+  color: var(--trace);
+}
+
+.archnode--critic .archnode__glyph {
+  color: oklch(74% 0.11 160);
+}
+
+.archnode__top {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.archnode__label {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--text);
+}
+
+.archnode__runtime {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.archnode__summary {
+  display: block;
+  margin-top: 3px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.archnode__live {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  align-self: center;
+}
+
+.archpanel {
+  position: sticky;
+  top: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  padding: 22px;
+  background: var(--elev-1);
+  box-shadow: var(--shadow-2);
+}
+
+.archpanel__kind {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.archpanel__kind--coordinator,
+.archpanel__kind--agent {
+  color: var(--accent);
+}
+
+.archpanel__kind--tool {
+  color: var(--trace);
+}
+
+.archpanel__kind--critic {
+  color: oklch(74% 0.11 160);
+}
+
+.archpanel__title {
+  margin: 6px 0 0;
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--text);
+}
+
+.archpanel__runtime {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.archpanel__model {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent);
+  margin-top: 4px;
+}
+
+.archpanel__detail {
+  margin: 16px 0 0;
+  font-size: 13px;
+  line-height: 1.62;
+  color: var(--text-muted);
+}
+
+.archpanel__io {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--border);
+  display: grid;
+  gap: 7px;
+}
+
+.archpanel__io li {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-subtle);
+}
+
+.arch__legend {
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 28px;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 14px;
+  align-items: baseline;
+}
+
+.legend__name {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.legend__role {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
 .trace {
   max-width: var(--maxw);
   margin: 0 auto;
