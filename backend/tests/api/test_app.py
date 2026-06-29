@@ -57,6 +57,33 @@ def test_conversation_accumulates_across_turns() -> None:
     assert second["resolved_city_ids"] == ["city_goi"]
 
 
+def test_introspect_describes_the_agent_graph() -> None:
+    response = _client().get("/introspect")
+    assert response.status_code == 200
+    arch = response.json()
+
+    # Credential-free path reports the heuristic reasoning models.
+    assert arch["live"] is False
+    assert arch["model_fast"] == "heuristic"
+    assert arch["model_planner"] == "heuristic"
+
+    root = arch["root"]
+    assert root["id"] == "coordinator"
+    assert root["kind"] == "coordinator"
+
+    children = {c["id"] for c in root["children"]}
+    assert {"intent", "enrichment", "specialists", "synthesizer", "critic"} <= children
+
+    specialists = next(c for c in root["children"] if c["id"] == "specialists")
+    tools = {c["id"] for c in specialists["children"]}
+    assert {"flights", "hotels", "visa", "weather", "pois"} <= tools
+
+    # Every node that maps to a runtime step declares a matching prefix, so the
+    # live highlight can find it from a STEP_STARTED event.
+    assert specialists["children"][0]["step_match"]  # e.g. ["flights:"]
+    assert {p["key"] for p in arch["protocols"]} == {"adk", "a2a", "mcp", "agui", "gemini"}
+
+
 def test_plan_stream_emits_agui_events() -> None:
     response = _client().post(
         "/plan/stream", json={"query": "Plan 2 nights in Goa", "traveler_id": "tr_arjun"}

@@ -11,6 +11,7 @@ from pydantic import BaseModel
 
 from agentic_travel.agents.coordinator import PlanningResult
 from agentic_travel.api.agui import plan_event_stream
+from agentic_travel.api.architecture import Architecture, describe_architecture
 from agentic_travel.api.dependencies import (
     ConversationStore,
     PlannerFactory,
@@ -63,6 +64,14 @@ def create_app(settings: Settings | None = None, services: Services | None = Non
     @app.get("/personas")
     def personas() -> list[TravelerProfile]:
         return services.memory.list_personas()
+
+    @app.get("/introspect")
+    def introspect() -> Architecture:
+        return describe_architecture(
+            live=factory.live_enabled,
+            model_fast=settings.gemini_model_fast or "",
+            model_planner=settings.gemini_model_planner or "",
+        )
 
     @app.post("/plan")
     def plan(request: PlanRequest) -> PlanningResult:
