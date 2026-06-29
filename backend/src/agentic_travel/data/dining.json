@@ -1,0 +1,1282 @@
+{
+  "restaurants": [
+    {
+      "id": "rst_bom_bademiya",
+      "city_id": "city_bom",
+      "name": "Bademiya",
+      "cuisine": "Mughlai Street Food",
+      "neighborhood": "Colaba",
+      "price_tier": "budget",
+      "meals": [
+        "dinner"
+      ],
+      "dietary": [
+        "halal"
+      ],
+      "why": "Smoke-charred seekh kebabs and baida roti eaten standing on the lane behind the Taj after midnight.",
+      "rating": 4.2,
+      "location": {
+        "lat": 18.9217,
+        "lng": 72.8323
+      }
+    },
+    {
+      "id": "rst_bom_swati_snacks",
+      "city_id": "city_bom",
+      "name": "Swati Snacks",
+      "cuisine": "Gujarati Vegetarian",
+      "neighborhood": "Tardeo",
+      "price_tier": "mid_range",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "why": "Panki steamed in banana leaf and satvik thali in a bright canteen the whole city queues for.",
+      "rating": 4.4,
+      "location": {
+        "lat": 18.969,
+        "lng": 72.809
+      }
+    },
+    {
+      "id": "rst_bom_britannia",
+      "city_id": "city_bom",
+      "name": "Britannia & Co.",
+      "cuisine": "Parsi Irani",
+      "neighborhood": "Ballard Estate",
+      "price_tier": "mid_range",
+      "meals": [
+        "lunch"
+      ],
+      "dietary": [
+        "none"
+      ],
+      "why": "Berry pulao crowned with barberries in a 1923 cafe with cane chairs and a portrait of the Queen.",
+      "rating": 4.3,
+      "location": {
+        "lat": 18.9385,
+        "lng": 72.841
+      }
+    },
+    {
+      "id": "rst_bom_kala_ghoda_cafe",
+      "city_id": "city_bom",
+      "name": "Kala Ghoda Cafe",
+      "cuisine": "Cafe / Continental",
+      "neighborhood": "Kala Ghoda",
+      "price_tier": "mid_range",
+      "meals": [
+        "breakfast",
+        "lunch"
+      ],
+      "dietary": [
+        "vegan",
+        "vegetarian"
+      ],
+      "why": "Single-origin pour-overs and almond-milk bowls in a sunlit pocket of the arts district.",
+      "rating": 4.3,
+      "location": {
+        "lat": 18.9275,
+        "lng": 72.8322
+      }
+    },
+    {
+      "id": "rst_bom_trishna",
+      "city_id": "city_bom",
+      "name": "Trishna",
+      "cuisine": "Coastal Indian Seafood",
+      "neighborhood": "Fort",
+      "price_tier": "premium",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "none"
+      ],
+      "why": "The butter-pepper-garlic crab that made Mumbai seafood famous, cracked open in a snug Fort hideaway.",
+      "rating": 4.5,
+      "location": {
+        "lat": 18.9295,
+        "lng": 72.8323
+      }
+    },
+    {
+      "id": "rst_bom_wasabi",
+      "city_id": "city_bom",
+      "name": "Wasabi by Morimoto",
+      "cuisine": "Japanese Sushi",
+      "neighborhood": "Apollo Bunder",
+      "price_tier": "luxury",
+      "meals": [
+        "dinner"
+      ],
+      "dietary": [
+        "none"
+      ],
+      "why": "Omakase and toro tartare over the harbour from the Taj Mahal Palace, watching the Gateway light up.",
+      "rating": 4.6,
+      "location": {
+        "lat": 18.9219,
+        "lng": 72.8332
+      }
+    },
+    {
+      "id": "rst_goi_vinayak",
+      "city_id": "city_goi",
+      "name": "Vinayak Family Restaurant",
+      "cuisine": "Goan Coastal",
+      "neighborhood": "Assagao",
+      "price_tier": "budget",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "none"
+      ],
+      "why": "Fiery fish thali and prawn rava fry in a no-frills village spot locals swear by over the beach shacks.",
+      "rating": 4.4,
+      "location": {
+        "lat": 15.601,
+        "lng": 73.756
+      }
+    },
+    {
+      "id": "rst_goi_bean_me_up",
+      "city_id": "city_goi",
+      "name": "Bean Me Up",
+      "cuisine": "Vegan / Global Vegetarian",
+      "neighborhood": "Vagator",
+      "price_tier": "mid_range",
+      "meals": [
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegan",
+        "vegetarian"
+      ],
+      "why": "Tempeh bowls and cashew cheesecake under fairy lights in a leafy garden courtyard.",
+      "rating": 4.5,
+      "location": {
+        "lat": 15.599,
+        "lng": 73.744
+      }
+    },
+    {
+      "id": "rst_goi_martins_corner",
+      "city_id": "city_goi",
+      "name": "Martin's Corner",
+      "cuisine": "Goan Seafood",
+      "neighborhood": "Betalbatim",
+      "price_tier": "mid_range",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "none"
+      ],
+      "why": "Sorpotel and stuffed crab with live sax music in a South Goa institution that started as a tiny bar.",
+      "rating": 4.4,
+      "location": {
+        "lat": 15.273,
+        "lng": 73.918
+      }
+    },
+    {
+      "id": "rst_goi_zaffran",
+      "city_id": "city_goi",
+      "name": "Zaffran",
+      "cuisine": "North Indian / Mughlai",
+      "neighborhood": "Calangute",
+      "price_tier": "mid_range",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "halal",
+        "vegetarian"
+      ],
+      "why": "Slow-cooked rogan josh and clay-oven kebabs for nights you crave the north on the Goan coast.",
+      "rating": 4.2,
+      "location": {
+        "lat": 15.544,
+        "lng": 73.755
+      }
+    },
+    {
+      "id": "rst_goi_gunpowder",
+      "city_id": "city_goi",
+      "name": "Gunpowder",
+      "cuisine": "South Indian Coastal",
+      "neighborhood": "Assagao",
+      "price_tier": "premium",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "why": "Andhra-style appams and Kerala fish curry on a breezy verandah tucked behind a plant nursery.",
+      "rating": 4.5,
+      "location": {
+        "lat": 15.595,
+        "lng": 73.752
+      }
+    },
+    {
+      "id": "rst_goi_a_reverie",
+      "city_id": "city_goi",
+      "name": "A Reverie",
+      "cuisine": "Modern European",
+      "neighborhood": "Calangute",
+      "price_tier": "luxury",
+      "meals": [
+        "dinner"
+      ],
+      "dietary": [
+        "none"
+      ],
+      "why": "Theatrical tasting menus and smoking cocktails in a candlelit garden that feels worlds from the beach crowds.",
+      "rating": 4.6,
+      "location": {
+        "lat": 15.551,
+        "lng": 73.76
+      }
+    },
+    {
+      "id": "rst_cmb_upali",
+      "city_id": "city_cmb",
+      "name": "Upali's by Nawaloka",
+      "cuisine": "Sri Lankan",
+      "neighborhood": "Colombo 7 (Cinnamon Gardens)",
+      "price_tier": "mid_range",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "halal"
+      ],
+      "why": "Clay-pot kiri hodi and lamprais wrapped in banana leaf done the old Ceylon way.",
+      "rating": 4.4,
+      "location": {
+        "lat": 6.9166,
+        "lng": 79.8636
+      }
+    },
+    {
+      "id": "rst_cmb_ministry",
+      "city_id": "city_cmb",
+      "name": "Ministry of Crab",
+      "cuisine": "Seafood",
+      "neighborhood": "Pettah (Old Dutch Hospital)",
+      "price_tier": "luxury",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "halal"
+      ],
+      "why": "Whole mud crabs sized up to the two-kilo Crabzilla, served with garlic chilli butter.",
+      "rating": 4.6,
+      "location": {
+        "lat": 6.9344,
+        "lng": 79.8428
+      }
+    },
+    {
+      "id": "rst_cmb_palmyrah",
+      "city_id": "city_cmb",
+      "name": "Palmyrah Restaurant",
+      "cuisine": "Jaffna Tamil",
+      "neighborhood": "Kollupitiya (Colombo 3)",
+      "price_tier": "mid_range",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "why": "Fiery Jaffna crab curry and odiyal kool seafood broth from the north.",
+      "rating": 4.3,
+      "location": {
+        "lat": 6.9094,
+        "lng": 79.8508
+      }
+    },
+    {
+      "id": "rst_cmb_pilawoos",
+      "city_id": "city_cmb",
+      "name": "Hotel De Pilawoos",
+      "cuisine": "Sri Lankan Street Food",
+      "neighborhood": "Kollupitiya (Colombo 4)",
+      "price_tier": "budget",
+      "meals": [
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "halal"
+      ],
+      "why": "Late-night cheese kottu chopped to a clatter on the hot griddle.",
+      "rating": 4.2,
+      "location": {
+        "lat": 6.8929,
+        "lng": 79.8556
+      }
+    },
+    {
+      "id": "rst_cmb_kaema",
+      "city_id": "city_cmb",
+      "name": "Kaema Sutra",
+      "cuisine": "Modern Sri Lankan",
+      "neighborhood": "Colombo 3 (Shangri-La)",
+      "price_tier": "premium",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "why": "Chef Dharshan Munidasa's hoppers and isso wade reimagined with a harbour view.",
+      "rating": 4.5,
+      "location": {
+        "lat": 6.927,
+        "lng": 79.8458
+      }
+    },
+    {
+      "id": "rst_cmb_greenleaf",
+      "city_id": "city_cmb",
+      "name": "Shanmugas",
+      "cuisine": "South Indian Vegetarian",
+      "neighborhood": "Wellawatte (Colombo 6)",
+      "price_tier": "budget",
+      "meals": [
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegan",
+        "vegetarian"
+      ],
+      "why": "Crisp masala dosa and unlimited banana-leaf vegetarian thali.",
+      "rating": 4.1,
+      "location": {
+        "lat": 6.8722,
+        "lng": 79.8606
+      }
+    },
+    {
+      "id": "rst_dxb_alustad",
+      "city_id": "city_dxb",
+      "name": "Al Ustad Special Kabab",
+      "cuisine": "Persian",
+      "neighborhood": "Al Mankhool (Bur Dubai)",
+      "price_tier": "budget",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "halal"
+      ],
+      "why": "Charcoal-grilled chicken and mutton kababs on saffron rice in a photo-plastered 1978 institution.",
+      "rating": 4.4,
+      "location": {
+        "lat": 25.2536,
+        "lng": 55.2944
+      }
+    },
+    {
+      "id": "rst_dxb_arabian",
+      "city_id": "city_dxb",
+      "name": "Arabian Tea House",
+      "cuisine": "Emirati",
+      "neighborhood": "Al Fahidi Historical District",
+      "price_tier": "mid_range",
+      "meals": [
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "halal",
+        "vegetarian"
+      ],
+      "why": "Emirati breakfast spread of balaleet and chebab under a courtyard of white wicker and bougainvillea.",
+      "rating": 4.3,
+      "location": {
+        "lat": 25.2637,
+        "lng": 55.2989
+      }
+    },
+    {
+      "id": "rst_dxb_ravi",
+      "city_id": "city_dxb",
+      "name": "Ravi Restaurant",
+      "cuisine": "Pakistani",
+      "neighborhood": "Satwa",
+      "price_tier": "budget",
+      "meals": [
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "halal",
+        "vegetarian"
+      ],
+      "why": "Cult-favourite mutton paya and daal with fresh tandoori naan into the early hours.",
+      "rating": 4.5,
+      "location": {
+        "lat": 25.2308,
+        "lng": 55.2706
+      }
+    },
+    {
+      "id": "rst_dxb_pierchic",
+      "city_id": "city_dxb",
+      "name": "Pierchic",
+      "cuisine": "Seafood",
+      "neighborhood": "Jumeirah (Al Qasr)",
+      "price_tier": "luxury",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "halal"
+      ],
+      "why": "Oysters and Omani lobster on a pier with the Burj Al Arab framed across the water.",
+      "rating": 4.6,
+      "location": {
+        "lat": 25.1335,
+        "lng": 55.1846
+      }
+    },
+    {
+      "id": "rst_dxb_orfali",
+      "city_id": "city_dxb",
+      "name": "Orfali Bros Bistro",
+      "cuisine": "Modern Levantine",
+      "neighborhood": "Wasl 51 (Al Wasl)",
+      "price_tier": "premium",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "halal",
+        "vegetarian"
+      ],
+      "why": "Syrian-rooted tasting plates like the K-Beef and wagyu kibbeh from the MENA top-ranked kitchen.",
+      "rating": 4.7,
+      "location": {
+        "lat": 25.2056,
+        "lng": 55.2553
+      }
+    },
+    {
+      "id": "rst_dxb_wildco",
+      "city_id": "city_dxb",
+      "name": "Wild & The Moon",
+      "cuisine": "Plant-Based",
+      "neighborhood": "Alserkal Avenue (Al Quoz)",
+      "price_tier": "mid_range",
+      "meals": [
+        "breakfast",
+        "lunch"
+      ],
+      "dietary": [
+        "vegan",
+        "vegetarian"
+      ],
+      "why": "Cold-pressed juices and a fully vegan moon bowl in the arts-district warehouse scene.",
+      "rating": 4.2,
+      "location": {
+        "lat": 25.1437,
+        "lng": 55.2348
+      }
+    },
+    {
+      "id": "rst_sfo_tartine",
+      "city_id": "city_sfo",
+      "name": "Tartine Bakery",
+      "cuisine": "Bakery & Cafe",
+      "neighborhood": "Mission District",
+      "price_tier": "budget",
+      "meals": [
+        "breakfast",
+        "lunch"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "why": "The morning bun and country bread draw lines down Guerrero Street",
+      "rating": 4.5,
+      "location": {
+        "lat": 37.7614,
+        "lng": -122.4241
+      }
+    },
+    {
+      "id": "rst_sfo_laguna",
+      "city_id": "city_sfo",
+      "name": "La Taqueria",
+      "cuisine": "Mexican",
+      "neighborhood": "Mission District",
+      "price_tier": "budget",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "none"
+      ],
+      "why": "The carnitas burrito with no rice is a Mission institution",
+      "rating": 4.4,
+      "location": {
+        "lat": 37.7509,
+        "lng": -122.4181
+      }
+    },
+    {
+      "id": "rst_sfo_shizen",
+      "city_id": "city_sfo",
+      "name": "Shizen",
+      "cuisine": "Japanese Vegan Sushi",
+      "neighborhood": "Mission District",
+      "price_tier": "mid_range",
+      "meals": [
+        "dinner"
+      ],
+      "dietary": [
+        "vegan",
+        "vegetarian"
+      ],
+      "why": "Entirely plant-based sushi where the eggplant nigiri stands in for fish",
+      "rating": 4.5,
+      "location": {
+        "lat": 37.7693,
+        "lng": -122.422
+      }
+    },
+    {
+      "id": "rst_sfo_oldjerusalem",
+      "city_id": "city_sfo",
+      "name": "Old Jerusalem Restaurant",
+      "cuisine": "Middle Eastern",
+      "neighborhood": "Mission District",
+      "price_tier": "mid_range",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "halal",
+        "vegetarian"
+      ],
+      "why": "Halal lamb shawarma and fresh hummus in a cozy family spot",
+      "rating": 4.4,
+      "location": {
+        "lat": 37.7528,
+        "lng": -122.4188
+      }
+    },
+    {
+      "id": "rst_sfo_zuni",
+      "city_id": "city_sfo",
+      "name": "Zuni Cafe",
+      "cuisine": "Californian",
+      "neighborhood": "Hayes Valley",
+      "price_tier": "premium",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "none"
+      ],
+      "why": "The wood-oven roast chicken for two with bread salad is the signature dish",
+      "rating": 4.4,
+      "location": {
+        "lat": 37.7735,
+        "lng": -122.4226
+      }
+    },
+    {
+      "id": "rst_sfo_bensonomi",
+      "city_id": "city_sfo",
+      "name": "Benu",
+      "cuisine": "Modern American",
+      "neighborhood": "SoMa",
+      "price_tier": "luxury",
+      "meals": [
+        "dinner"
+      ],
+      "dietary": [
+        "none"
+      ],
+      "why": "Three-Michelin-star tasting menu known for its faux shark fin soup",
+      "rating": 4.7,
+      "location": {
+        "lat": 37.7854,
+        "lng": -122.3993
+      }
+    },
+    {
+      "id": "rst_nyc_joes",
+      "city_id": "city_nyc",
+      "name": "Joe's Pizza",
+      "cuisine": "Pizza",
+      "neighborhood": "Greenwich Village",
+      "price_tier": "budget",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "why": "A classic foldable cheese slice from the Carmine Street counter",
+      "rating": 4.5,
+      "location": {
+        "lat": 40.7305,
+        "lng": -74.0026
+      }
+    },
+    {
+      "id": "rst_nyc_xian",
+      "city_id": "city_nyc",
+      "name": "Xi'an Famous Foods",
+      "cuisine": "Chinese",
+      "neighborhood": "Chinatown",
+      "price_tier": "budget",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "none"
+      ],
+      "why": "Hand-pulled spicy cumin lamb noodles served fast and cheap",
+      "rating": 4.3,
+      "location": {
+        "lat": 40.7156,
+        "lng": -73.997
+      }
+    },
+    {
+      "id": "rst_nyc_superiority",
+      "city_id": "city_nyc",
+      "name": "Superiority Burger",
+      "cuisine": "Vegetarian American",
+      "neighborhood": "East Village",
+      "price_tier": "mid_range",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegan",
+        "vegetarian"
+      ],
+      "why": "The namesake veggie burger and rotating vegan sides pack a tiny diner",
+      "rating": 4.5,
+      "location": {
+        "lat": 40.7253,
+        "lng": -73.9839
+      }
+    },
+    {
+      "id": "rst_nyc_thehalalguys",
+      "city_id": "city_nyc",
+      "name": "The Halal Guys",
+      "cuisine": "Middle Eastern",
+      "neighborhood": "Midtown",
+      "price_tier": "budget",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "halal"
+      ],
+      "why": "Halal chicken and gyro over rice with the famous white sauce off 53rd Street",
+      "rating": 4.3,
+      "location": {
+        "lat": 40.7616,
+        "lng": -73.9794
+      }
+    },
+    {
+      "id": "rst_nyc_balthazar",
+      "city_id": "city_nyc",
+      "name": "Balthazar",
+      "cuisine": "French Brasserie",
+      "neighborhood": "SoHo",
+      "price_tier": "premium",
+      "meals": [
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "why": "Bustling Parisian-style brasserie known for its seafood plateau and pastries",
+      "rating": 4.4,
+      "location": {
+        "lat": 40.7224,
+        "lng": -73.9984
+      }
+    },
+    {
+      "id": "rst_nyc_elevenmadison",
+      "city_id": "city_nyc",
+      "name": "Eleven Madison Park",
+      "cuisine": "Plant-Based Fine Dining",
+      "neighborhood": "Flatiron",
+      "price_tier": "luxury",
+      "meals": [
+        "dinner"
+      ],
+      "dietary": [
+        "vegan",
+        "vegetarian"
+      ],
+      "why": "Three-Michelin-star fully plant-based tasting menu overlooking Madison Square Park",
+      "rating": 4.6,
+      "location": {
+        "lat": 40.7416,
+        "lng": -73.9872
+      }
+    },
+    {
+      "id": "rst_lon_dishoom",
+      "city_id": "city_lon",
+      "name": "Dishoom",
+      "cuisine": "Indian",
+      "neighborhood": "Covent Garden",
+      "price_tier": "mid_range",
+      "meals": [
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegetarian",
+        "halal"
+      ],
+      "why": "The bacon naan roll and black daal cooked over 24 hours in a Bombay-cafe setting.",
+      "rating": 4.7,
+      "location": {
+        "lat": 51.5126,
+        "lng": -0.1267
+      }
+    },
+    {
+      "id": "rst_lon_padella",
+      "city_id": "city_lon",
+      "name": "Padella",
+      "cuisine": "Italian",
+      "neighborhood": "Borough Market",
+      "price_tier": "budget",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "why": "Hand-rolled pici cacio e pepe served fast at the counter near the market stalls.",
+      "rating": 4.6,
+      "location": {
+        "lat": 51.5054,
+        "lng": -0.0905
+      }
+    },
+    {
+      "id": "rst_lon_gauthier",
+      "city_id": "city_lon",
+      "name": "Gauthier Soho",
+      "cuisine": "French",
+      "neighborhood": "Soho",
+      "price_tier": "luxury",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegan",
+        "vegetarian"
+      ],
+      "why": "A fully plant-based fine-dining tasting menu in a Georgian Soho townhouse.",
+      "rating": 4.6,
+      "location": {
+        "lat": 51.5131,
+        "lng": -0.1334
+      }
+    },
+    {
+      "id": "rst_lon_stjohn",
+      "city_id": "city_lon",
+      "name": "St. JOHN",
+      "cuisine": "British",
+      "neighborhood": "Smithfield",
+      "price_tier": "premium",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "none"
+      ],
+      "why": "Nose-to-tail roast bone marrow with parsley salad in a stark whitewashed dining room.",
+      "rating": 4.5,
+      "location": {
+        "lat": 51.5203,
+        "lng": -0.1017
+      }
+    },
+    {
+      "id": "rst_lon_franco",
+      "city_id": "city_lon",
+      "name": "The Ledbury",
+      "cuisine": "Modern European",
+      "neighborhood": "Notting Hill",
+      "price_tier": "luxury",
+      "meals": [
+        "dinner"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "why": "Two-Michelin-star tasting menu with celeriac baked in barbecued hay.",
+      "rating": 4.8,
+      "location": {
+        "lat": 51.5165,
+        "lng": -0.2008
+      }
+    },
+    {
+      "id": "rst_lon_beigel",
+      "city_id": "city_lon",
+      "name": "Beigel Bake",
+      "cuisine": "Jewish Bakery",
+      "neighborhood": "Shoreditch",
+      "price_tier": "budget",
+      "meals": [
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "why": "Salt beef bagels served 24 hours a day from a Brick Lane institution.",
+      "rating": 4.5,
+      "location": {
+        "lat": 51.5243,
+        "lng": -0.0716
+      }
+    },
+    {
+      "id": "rst_par_septime",
+      "city_id": "city_par",
+      "name": "Septime",
+      "cuisine": "Modern French",
+      "neighborhood": "11th arrondissement",
+      "price_tier": "premium",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "why": "A surprise tasting menu of seasonal produce in a relaxed bistronomy dining room.",
+      "rating": 4.7,
+      "location": {
+        "lat": 48.8537,
+        "lng": 2.3819
+      }
+    },
+    {
+      "id": "rst_par_breizh",
+      "city_id": "city_par",
+      "name": "Breizh Cafe",
+      "cuisine": "Creperie",
+      "neighborhood": "Le Marais",
+      "price_tier": "mid_range",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "why": "Buckwheat galettes with farm eggs and Bordier butter alongside Breton cider.",
+      "rating": 4.5,
+      "location": {
+        "lat": 48.8606,
+        "lng": 2.3622
+      }
+    },
+    {
+      "id": "rst_par_lambrosie",
+      "city_id": "city_par",
+      "name": "L'Ambroisie",
+      "cuisine": "Haute French",
+      "neighborhood": "Place des Vosges",
+      "price_tier": "luxury",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "none"
+      ],
+      "why": "Three-Michelin-star classicism with langoustine and sesame feuillantine on Place des Vosges.",
+      "rating": 4.7,
+      "location": {
+        "lat": 48.8553,
+        "lng": 2.3653
+      }
+    },
+    {
+      "id": "rst_par_lasdumf",
+      "city_id": "city_par",
+      "name": "L'As du Fallafel",
+      "cuisine": "Middle Eastern",
+      "neighborhood": "Le Marais",
+      "price_tier": "budget",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegetarian",
+        "halal"
+      ],
+      "why": "Overstuffed falafel pita with fried aubergine on the Rue des Rosiers.",
+      "rating": 4.4,
+      "location": {
+        "lat": 48.8573,
+        "lng": 2.3592
+      }
+    },
+    {
+      "id": "rst_par_gentle",
+      "city_id": "city_par",
+      "name": "Gentle Gourmet",
+      "cuisine": "Vegan",
+      "neighborhood": "12th arrondissement",
+      "price_tier": "mid_range",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegan",
+        "vegetarian"
+      ],
+      "why": "Plant-based French plates like seitan bourguignon near the Bastille opera.",
+      "rating": 4.3,
+      "location": {
+        "lat": 48.8479,
+        "lng": 2.3736
+      }
+    },
+    {
+      "id": "rst_par_dupain",
+      "city_id": "city_par",
+      "name": "Du Pain et des Idees",
+      "cuisine": "Bakery",
+      "neighborhood": "10th arrondissement",
+      "price_tier": "budget",
+      "meals": [
+        "breakfast",
+        "lunch"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "why": "The escargot pistachio-chocolate pastry from a tiled 19th-century bakery near Canal Saint-Martin.",
+      "rating": 4.6,
+      "location": {
+        "lat": 48.8696,
+        "lng": 2.3623
+      }
+    },
+    {
+      "id": "rst_tyo_sukiyabashi_jiro",
+      "city_id": "city_tyo",
+      "name": "Sukiyabashi Jiro",
+      "cuisine": "Sushi",
+      "neighborhood": "Ginza",
+      "price_tier": "luxury",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "none"
+      ],
+      "why": "Edomae omakase served piece by piece at the counter by the Ono family.",
+      "rating": 4.7,
+      "location": {
+        "lat": 35.6717,
+        "lng": 139.7637
+      }
+    },
+    {
+      "id": "rst_tyo_daiwa_sushi",
+      "city_id": "city_tyo",
+      "name": "Daiwa Sushi",
+      "cuisine": "Sushi",
+      "neighborhood": "Toyosu",
+      "price_tier": "mid_range",
+      "meals": [
+        "breakfast",
+        "lunch"
+      ],
+      "dietary": [
+        "none"
+      ],
+      "why": "Fatty tuna nigiri eaten steps from the Toyosu fish market auction floor.",
+      "rating": 4.4,
+      "location": {
+        "lat": 35.6451,
+        "lng": 139.7866
+      }
+    },
+    {
+      "id": "rst_tyo_ichiran_shibuya",
+      "city_id": "city_tyo",
+      "name": "Ichiran Shibuya",
+      "cuisine": "Ramen",
+      "neighborhood": "Shibuya",
+      "price_tier": "budget",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "none"
+      ],
+      "why": "Tonkotsu ramen customized to your taste in a private solo booth.",
+      "rating": 4.2,
+      "location": {
+        "lat": 35.6595,
+        "lng": 139.7005
+      }
+    },
+    {
+      "id": "rst_tyo_sasanoyuki",
+      "city_id": "city_tyo",
+      "name": "Sasanoyuki",
+      "cuisine": "Tofu Kaiseki",
+      "neighborhood": "Negishi",
+      "price_tier": "mid_range",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "why": "Silky house-made tofu courses from a shop serving the dish since the Edo period.",
+      "rating": 4.3,
+      "location": {
+        "lat": 35.7261,
+        "lng": 139.7836
+      }
+    },
+    {
+      "id": "rst_tyo_komaki_shokudo",
+      "city_id": "city_tyo",
+      "name": "Komaki Shokudo",
+      "cuisine": "Shojin Vegan",
+      "neighborhood": "Akihabara",
+      "price_tier": "mid_range",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegan"
+      ],
+      "why": "Buddhist shojin-ryori set meals built around seasonal vegetables and miso.",
+      "rating": 4.1,
+      "location": {
+        "lat": 35.6987,
+        "lng": 139.7745
+      }
+    },
+    {
+      "id": "rst_tyo_naritaya",
+      "city_id": "city_tyo",
+      "name": "Naritaya Halal Ramen",
+      "cuisine": "Halal Ramen",
+      "neighborhood": "Asakusa",
+      "price_tier": "budget",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "halal"
+      ],
+      "why": "Chicken-based halal tonkotsu-style ramen a short walk from Senso-ji temple.",
+      "rating": 4.2,
+      "location": {
+        "lat": 35.7119,
+        "lng": 139.7967
+      }
+    },
+    {
+      "id": "rst_sin_odette",
+      "city_id": "city_sin",
+      "name": "Odette",
+      "cuisine": "Modern French",
+      "neighborhood": "City Hall",
+      "price_tier": "luxury",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "none"
+      ],
+      "why": "Refined tasting menus inside the National Gallery from chef Julien Royer.",
+      "rating": 4.8,
+      "location": {
+        "lat": 1.2902,
+        "lng": 103.8514
+      }
+    },
+    {
+      "id": "rst_sin_tian_tian",
+      "city_id": "city_sin",
+      "name": "Tian Tian Hainanese Chicken Rice",
+      "cuisine": "Hainanese",
+      "neighborhood": "Chinatown",
+      "price_tier": "budget",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "none"
+      ],
+      "why": "Poached chicken over fragrant rice at the famed Maxwell Food Centre stall.",
+      "rating": 4.3,
+      "location": {
+        "lat": 1.2803,
+        "lng": 103.8447
+      }
+    },
+    {
+      "id": "rst_sin_jumbo_seafood",
+      "city_id": "city_sin",
+      "name": "Jumbo Seafood East Coast",
+      "cuisine": "Seafood",
+      "neighborhood": "East Coast",
+      "price_tier": "mid_range",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "none"
+      ],
+      "why": "Signature chili crab eaten with mantou buns by the seafront.",
+      "rating": 4.4,
+      "location": {
+        "lat": 1.301,
+        "lng": 103.9123
+      }
+    },
+    {
+      "id": "rst_sin_zaffron_kitchen",
+      "city_id": "city_sin",
+      "name": "Zaffron Kitchen",
+      "cuisine": "North Indian",
+      "neighborhood": "Little India",
+      "price_tier": "mid_range",
+      "meals": [
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "halal"
+      ],
+      "why": "Halal-certified butter chicken and tandoori naan in a buzzing dining room.",
+      "rating": 4.2,
+      "location": {
+        "lat": 1.311,
+        "lng": 103.854
+      }
+    },
+    {
+      "id": "rst_sin_komala_vilas",
+      "city_id": "city_sin",
+      "name": "Komala Vilas",
+      "cuisine": "South Indian Vegetarian",
+      "neighborhood": "Little India",
+      "price_tier": "budget",
+      "meals": [
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegetarian"
+      ],
+      "why": "Crisp dosai and thali served on banana-leaf style trays since 1947.",
+      "rating": 4.2,
+      "location": {
+        "lat": 1.3074,
+        "lng": 103.8516
+      }
+    },
+    {
+      "id": "rst_sin_real_food",
+      "city_id": "city_sin",
+      "name": "Real Food",
+      "cuisine": "Plant-Based",
+      "neighborhood": "Orchard",
+      "price_tier": "mid_range",
+      "meals": [
+        "breakfast",
+        "lunch",
+        "dinner"
+      ],
+      "dietary": [
+        "vegan"
+      ],
+      "why": "Wholegrain vegan bowls and fresh juices near the Orchard Road shops.",
+      "rating": 4.1,
+      "location": {
+        "lat": 1.301,
+        "lng": 103.839
+      }
+    }
+  ]
+}

@@ -4,7 +4,9 @@ from agentic_travel.itinerary.models import (
     Activity,
     CostBreakdown,
     DayPlan,
+    DiningPick,
     Itinerary,
+    TripEvent,
 )
 from agentic_travel.itinerary.validation import (
     IssueSeverity,
@@ -17,8 +19,10 @@ __all__ = [
     "Activity",
     "CostBreakdown",
     "DayPlan",
+    "DiningPick",
     "IssueSeverity",
     "Itinerary",
+    "TripEvent",
     "ValidationIssue",
     "ValidationReport",
     "validate_itinerary",

@@ -17,6 +17,7 @@ from typing import Protocol, TypeVar
 from pydantic import BaseModel, Field
 
 from agentic_travel.agents.base import Agent
+from agentic_travel.agents.models import TripBrief
 from agentic_travel.agents.planning import PlanningContext
 from agentic_travel.domain.fx import to_inr
 from agentic_travel.domain.geo import GeoPoint
@@ -26,9 +27,14 @@ from agentic_travel.itinerary.models import (
     Activity,
     CostBreakdown,
     DayPlan,
+    DiningPick,
     Itinerary,
+    TripEvent,
 )
+from agentic_travel.services.dining.models import Meal
+from agentic_travel.services.dining.service import DiningService
 from agentic_travel.services.flights.models import FlightOffer
+from agentic_travel.services.guide.service import GuideService
 from agentic_travel.services.hotels.models import HotelOffer
 
 _SYSTEM = """\
@@ -177,9 +183,16 @@ def _by_id(items: Sequence[_OfferT], wanted: str | None) -> _OfferT | None:
 class ItineraryAssembler:
     """Resolves a `SynthesisPlan` against a context into a full `Itinerary`."""
 
-    def __init__(self, store: GraphStore) -> None:
-        """Store the graph used to resolve POI names and ticket prices."""
+    def __init__(
+        self,
+        store: GraphStore,
+        dining: DiningService | None = None,
+        guide: GuideService | None = None,
+    ) -> None:
+        """Wire the graph plus optional dining and city-guide services."""
         self._store = store
+        self._dining = dining
+        self._guide = guide
 
     def assemble(
         self, plan: SynthesisPlan, ctx: PlanningContext, *, itinerary_id: str = "itin_draft"
@@ -194,7 +207,8 @@ class ItineraryAssembler:
                 flights.append(selected)
 
         hotels = self._resolve_hotels(plan, ctx)
-        days = [self._day(pd) for pd in plan.days]
+        used_restaurants: set[str] = set()
+        days = [self._day(pd, ctx.brief, used_restaurants) for pd in plan.days]
         start_date = ctx.brief.start_date or (days[0].date if days else date(2026, 1, 1))
         end_date = max((d.date for d in days), default=start_date)
         breakdown = _cost_breakdown(flights, hotels, days, ctx.brief.party_size)
@@ -217,8 +231,57 @@ class ItineraryAssembler:
             style_tags=_style_tags(ctx),
             highlights=_highlights(days),
             season_note=_season_note(ctx),
+            getting_around=self._getting_around(ctx),
+            events=self._events(ctx),
             cost_breakdown=breakdown,
         )
+
+    def _getting_around(self, ctx: PlanningContext) -> str | None:
+        if self._guide is None or not ctx.destination_city_ids:
+            return None
+        return self._guide.getting_around(ctx.destination_city_ids[0])
+
+    def _events(self, ctx: PlanningContext) -> list[TripEvent]:
+        if self._guide is None:
+            return []
+        month = ctx.brief.start_date.month if ctx.brief.start_date else 0
+        seen: set[str] = set()
+        events: list[TripEvent] = []
+        for city_id in ctx.destination_city_ids:
+            for event in self._guide.events_for(city_id, month):
+                if event.name not in seen:
+                    seen.add(event.name)
+                    events.append(TripEvent(name=event.name, blurb=event.blurb))
+        return events[:4]
+
+    def _dining_for(
+        self, city_id: str, brief: TripBrief, used: set[str]
+    ) -> list[DiningPick]:
+        if self._dining is None:
+            return []
+        picks: list[DiningPick] = []
+        for meal in (Meal.LUNCH, Meal.DINNER):
+            restaurant = self._dining.recommend(
+                city_id,
+                meal=meal,
+                food_preference=brief.food_preference,
+                budget_tier=brief.budget_tier,
+                exclude_ids=used,
+            )
+            if restaurant is not None:
+                used.add(restaurant.id)
+                picks.append(
+                    DiningPick(
+                        name=restaurant.name,
+                        cuisine=restaurant.cuisine,
+                        neighborhood=restaurant.neighborhood,
+                        meal=meal.value,
+                        price_tier=restaurant.price_tier.value,
+                        why=restaurant.why,
+                        rating=restaurant.rating,
+                    )
+                )
+        return picks
 
     def _resolve_hotels(self, plan: SynthesisPlan, ctx: PlanningContext) -> list[HotelOffer]:
         cities = {c.city_id: c for c in ctx.cities}
@@ -232,7 +295,7 @@ class ItineraryAssembler:
                 resolved.append(offer)
         return resolved
 
-    def _day(self, planned: PlannedDay) -> DayPlan:
+    def _day(self, planned: PlannedDay, brief: TripBrief, used: set[str]) -> DayPlan:
         activities: list[Activity] = []
         for item in planned.activities:
             poi = self._store.get_poi(item.poi_id)
@@ -249,14 +312,17 @@ class ItineraryAssembler:
                     notes=item.notes,
                 )
             )
-        # Travel time between consecutive stops — a key realism/trust signal.
+        # Travel time and mode between consecutive stops — a realism/trust signal.
         for current, nxt in zip(activities, activities[1:], strict=False):
             current.travel_minutes_to_next = _travel_minutes(current.location, nxt.location)
+            current.travel_mode_to_next = _travel_mode(current.location, nxt.location)
         return DayPlan(
             day_index=planned.day_index,
             date=planned.date,
             city_id=planned.city_id,
+            theme=_day_theme(activities),
             activities=activities,
+            dining=self._dining_for(planned.city_id, brief, used),
             notes=planned.notes,
         )
 
@@ -266,6 +332,42 @@ def _travel_minutes(origin: GeoPoint | None, destination: GeoPoint | None) -> in
     if origin is None or destination is None:
         return None
     return max(5, round(origin.distance_km(destination) / 22 * 60))
+
+
+def _travel_mode(origin: GeoPoint | None, destination: GeoPoint | None) -> str | None:
+    """Return a plausible transport mode based on the hop distance."""
+    if origin is None or destination is None:
+        return None
+    km = origin.distance_km(destination)
+    if km < 1.2:
+        return "walk"
+    if km < 12:
+        return "taxi"
+    return "transit"
+
+
+_THEME_BY_CATEGORY: dict[str, str] = {
+    "beach": "Sun, sand & sea",
+    "landmark": "Icons & landmarks",
+    "museum": "Art & history",
+    "religious": "Heritage & quiet corners",
+    "market": "Markets & street life",
+    "nature": "Open air & nature",
+    "entertainment": "Lights & late nights",
+    "adventure": "Out for adventure",
+}
+
+
+def _day_theme(activities: list[Activity]) -> str:
+    """Name the day from the kind of places it leans on."""
+    counts: dict[str, int] = {}
+    for activity in activities:
+        if activity.category:
+            counts[activity.category] = counts.get(activity.category, 0) + 1
+    if not counts:
+        return "A day at your pace"
+    top = max(counts, key=lambda c: counts[c])
+    return _THEME_BY_CATEGORY.get(top, "Highlights of the day")
 
 
 def _cost_breakdown(

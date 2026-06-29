@@ -22,7 +22,9 @@ from agentic_travel.data.loader import load_default_graph_store
 from agentic_travel.graph.store import GraphStore
 from agentic_travel.llm.client import GeminiClient, LlmClient
 from agentic_travel.observability.tracer import Tracer
+from agentic_travel.services.dining.service import DiningService
 from agentic_travel.services.flights.service import FlightService
+from agentic_travel.services.guide.service import GuideService
 from agentic_travel.services.hotels.service import HotelService
 from agentic_travel.services.memory.service import MemoryService
 from agentic_travel.services.visa.service import VisaService
@@ -39,6 +41,8 @@ class Services:
     visa: VisaService
     weather: WeatherService
     memory: MemoryService
+    dining: DiningService
+    guide: GuideService
 
 
 class ConversationStore:
@@ -66,6 +70,8 @@ def build_services() -> Services:
         visa=VisaService.from_default_dataset(),
         weather=WeatherService.from_default_dataset(),
         memory=MemoryService.from_default_dataset(),
+        dining=DiningService.from_default_dataset(),
+        guide=GuideService.from_default_dataset(),
     )
 
 
@@ -112,6 +118,8 @@ class PlannerFactory:
             visa=self._services.visa,
             weather=self._services.weather,
             memory=self._services.memory,
+            dining=self._services.dining,
+            guide=self._services.guide,
             models=models,
             tracer=tracer,
         )

@@ -1,0 +1,214 @@
+{
+  "cities": [
+    {
+      "city_id": "city_bom",
+      "getting_around": "From Chhatrapati Shivaji Maharaj International Airport, prepaid taxis, Uber/Ola, or the Aqua Line metro reach the city centre in 45-90 minutes depending on traffic. Locally, the suburban trains and the expanding metro are fastest, with auto-rickshaws in the suburbs and black-and-yellow taxis south of Bandra.",
+      "events": [
+        {
+          "name": "Ganesh Chaturthi",
+          "month": 9,
+          "blurb": "Ten days of clay Ganesha idols, drumming processions and immersions at Girgaon Chowpatty."
+        },
+        {
+          "name": "Kala Ghoda Arts Festival",
+          "month": 2,
+          "blurb": "Nine-day street art, theatre and installations across the heritage Kala Ghoda precinct."
+        },
+        {
+          "name": "Mumbai Marathon (Tata Mumbai Marathon)",
+          "month": 1,
+          "blurb": "The city runs across Marine Drive and the Sea Link at dawn each January."
+        }
+      ]
+    },
+    {
+      "city_id": "city_goi",
+      "getting_around": "From Manohar International Airport (Mopa) in the north or Dabolim in the south, prepaid taxis and app cabs reach the beach belts in 45-90 minutes. Locally, renting a scooter or motorbike is the Goan way, with taxis and the occasional ferry across the rivers filling the gaps.",
+      "events": [
+        {
+          "name": "Goa Carnival",
+          "month": 2,
+          "blurb": "King Momo leads floats, masks and street parades through Panaji before Lent."
+        },
+        {
+          "name": "Sunburn Festival",
+          "month": 12,
+          "blurb": "India's largest electronic music festival lights up the coast over New Year week."
+        },
+        {
+          "name": "Feast of St. Francis Xavier",
+          "month": 12,
+          "blurb": "Pilgrims gather at the Basilica of Bom Jesus in Old Goa to honour the saint."
+        }
+      ]
+    },
+    {
+      "city_id": "city_cmb",
+      "getting_around": "Bandaranaike International Airport sits about 35 km north of the city; pre-booked taxis or PickMe rideshare reach the center in 45-60 minutes, while the airport expressway bus is the budget option. In town, metered tuk-tuks via PickMe and the coastal railway line are the easiest ways to move.",
+      "events": [
+        {
+          "name": "Galle Face Green Weekend Food Stalls",
+          "month": 0,
+          "blurb": "Year-round seafront kades selling isso wade and kottu at sunset."
+        },
+        {
+          "name": "Sinhala and Tamil New Year (Avurudu)",
+          "month": 4,
+          "blurb": "Mid-April celebrations with kavum, kokis and traditional games across the city."
+        },
+        {
+          "name": "Vesak Poya Lantern Festival",
+          "month": 5,
+          "blurb": "May full moon when streets glow with paper lanterns and free dansala food stalls."
+        }
+      ]
+    },
+    {
+      "city_id": "city_dxb",
+      "getting_around": "Dubai International Airport (DXB) connects directly to the Red Line of the Dubai Metro, reaching Downtown in about 20 minutes, while taxis and Careem rideshare are plentiful. The driverless Metro plus the nol card for trams and buses cover most of the city cheaply.",
+      "events": [
+        {
+          "name": "Dubai Shopping Festival",
+          "month": 1,
+          "blurb": "Month-long January sales, fireworks and night markets across the malls."
+        },
+        {
+          "name": "Dubai Food Festival",
+          "month": 5,
+          "blurb": "Citywide tastings, Beach Canteen pop-ups and street-food trucks each May."
+        },
+        {
+          "name": "Global Village",
+          "month": 0,
+          "blurb": "Seasonal October-to-April culture park with pavilions and food from 90 countries."
+        }
+      ]
+    },
+    {
+      "city_id": "city_sfo",
+      "getting_around": "From SFO, take BART straight into downtown in about 30 minutes, or a rideshare for roughly $50. Once in the city, Muni buses and the historic streetcars plus plentiful rideshares cover most neighborhoods.",
+      "events": [
+        {
+          "name": "Hardly Strictly Bluegrass",
+          "month": 10,
+          "blurb": "Free roots and Americana music festival across Golden Gate Park."
+        },
+        {
+          "name": "San Francisco Pride",
+          "month": 6,
+          "blurb": "One of the largest Pride parades, marching down Market Street."
+        },
+        {
+          "name": "Outside Lands",
+          "month": 8,
+          "blurb": "Major music, food and wine festival in Golden Gate Park."
+        }
+      ]
+    },
+    {
+      "city_id": "city_nyc",
+      "getting_around": "From JFK take the AirTrain to the subway or the LIRR into Penn Station, or grab a yellow cab for a flat fare to Manhattan. Inside the city the 24-hour subway is the fastest way around, backed by buses and rideshares.",
+      "events": [
+        {
+          "name": "New York City Marathon",
+          "month": 11,
+          "blurb": "Runners wind through all five boroughs in early November."
+        },
+        {
+          "name": "Macy's Thanksgiving Day Parade",
+          "month": 11,
+          "blurb": "Giant balloons float down Central Park West to Herald Square."
+        },
+        {
+          "name": "Tribeca Festival",
+          "month": 6,
+          "blurb": "Film premieres and talks across Lower Manhattan venues."
+        }
+      ]
+    },
+    {
+      "city_id": "city_lon",
+      "getting_around": "From Heathrow, the Elizabeth line or Piccadilly line Underground reaches central London in 40-60 minutes, while Gatwick is served by the Gatwick Express to Victoria. Get a contactless card or Oyster and use the Tube, buses, and walking to cover most of the centre.",
+      "events": [
+        {
+          "name": "Notting Hill Carnival",
+          "month": 8,
+          "blurb": "Caribbean street parade with sound systems and jerk chicken stalls over the August bank holiday."
+        },
+        {
+          "name": "Wimbledon Championships",
+          "month": 7,
+          "blurb": "Grand Slam tennis on grass courts in SW19, with strawberries and cream."
+        },
+        {
+          "name": "Lord Mayor's Show",
+          "month": 11,
+          "blurb": "Centuries-old procession through the City of London ending with riverside fireworks."
+        }
+      ]
+    },
+    {
+      "city_id": "city_par",
+      "getting_around": "From Charles de Gaulle, the RER B train reaches central Paris in about 35 minutes, while Orly connects via the Orlyval to RER B or the new Metro line 14. Inside the city, the dense Metro and walkable arrondissements make a carnet of tickets or a Navigo pass the easiest way around.",
+      "events": [
+        {
+          "name": "Fete de la Musique",
+          "month": 6,
+          "blurb": "Free live music fills streets, squares and cafe terraces across the city every June 21."
+        },
+        {
+          "name": "Bastille Day",
+          "month": 7,
+          "blurb": "Military parade on the Champs-Elysees and evening fireworks at the Eiffel Tower."
+        },
+        {
+          "name": "Nuit Blanche",
+          "month": 10,
+          "blurb": "All-night contemporary art trail through galleries and public spaces."
+        }
+      ]
+    },
+    {
+      "city_id": "city_tyo",
+      "getting_around": "From Narita take the Narita Express (about 60 minutes) or from Haneda the Keikyu Line (about 20 minutes) into central Tokyo. Get a Suica or Pasmo IC card and rely on the JR Yamanote loop and the Tokyo Metro subway network to reach almost everywhere.",
+      "events": [
+        {
+          "name": "Sumida River Fireworks Festival",
+          "month": 7,
+          "blurb": "Over 20,000 fireworks light the sky above Asakusa on the last Saturday of July."
+        },
+        {
+          "name": "Sanno Matsuri",
+          "month": 6,
+          "blurb": "One of Tokyo's three great festivals, with a grand procession through central streets in mid-June."
+        },
+        {
+          "name": "Cherry Blossom Viewing in Ueno Park",
+          "month": 4,
+          "blurb": "Crowds gather under hundreds of sakura trees for hanami picnics in early April."
+        }
+      ]
+    },
+    {
+      "city_id": "city_sin",
+      "getting_around": "Changi Airport connects to downtown in about 30 minutes via the East West MRT line or a metered taxi. Tap an EZ-Link or contactless card on the clean, extensive MRT and bus network to get almost anywhere on the island.",
+      "events": [
+        {
+          "name": "Singapore Grand Prix",
+          "month": 9,
+          "blurb": "The Formula 1 night race winds through the floodlit Marina Bay street circuit in September."
+        },
+        {
+          "name": "Chinese New Year at Chinatown",
+          "month": 2,
+          "blurb": "Lantern-lit streets, festive bazaars and lion dances fill Chinatown in late January or February."
+        },
+        {
+          "name": "Deepavali in Little India",
+          "month": 10,
+          "blurb": "Serangoon Road glows with arches of lights for the Festival of Lights in October or November."
+        }
+      ]
+    }
+  ]
+}

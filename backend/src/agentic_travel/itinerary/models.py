@@ -35,6 +35,7 @@ class Activity(BaseModel):
     rating: float | None = None
     estimated_cost: Money | None = None
     travel_minutes_to_next: int | None = None
+    travel_mode_to_next: str | None = None
     notes: str = ""
 
     @property
@@ -48,14 +49,35 @@ class Activity(BaseModel):
         return _minutes(self.end) > _minutes(self.start)
 
 
+class DiningPick(BaseModel):
+    """A recommended restaurant for a meal."""
+
+    name: str
+    cuisine: str
+    neighborhood: str = ""
+    meal: str
+    price_tier: str = ""
+    why: str = ""
+    rating: float | None = None
+
+
 class DayPlan(BaseModel):
     """The ordered set of activities for a single day in one city."""
 
     day_index: int = Field(ge=1)
     date: date
     city_id: str
+    theme: str = ""
     activities: list[Activity] = Field(default_factory=list)
+    dining: list[DiningPick] = Field(default_factory=list)
     notes: str = ""
+
+
+class TripEvent(BaseModel):
+    """A notable happening during the trip window."""
+
+    name: str
+    blurb: str = ""
 
 
 class CostBreakdown(BaseModel):
@@ -90,6 +112,8 @@ class Itinerary(BaseModel):
     style_tags: list[str] = Field(default_factory=list)
     highlights: list[str] = Field(default_factory=list)
     season_note: str | None = None
+    getting_around: str | None = None
+    events: list[TripEvent] = Field(default_factory=list)
     cost_breakdown: CostBreakdown | None = None
 
     @property

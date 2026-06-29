@@ -31,7 +31,9 @@ from agentic_travel.itinerary.validation import ValidationReport, validate_itine
 from agentic_travel.llm.client import LlmClient
 from agentic_travel.observability.span import SpanKind
 from agentic_travel.observability.tracer import Tracer
+from agentic_travel.services.dining.service import DiningService
 from agentic_travel.services.flights.service import FlightService
+from agentic_travel.services.guide.service import GuideService
 from agentic_travel.services.hotels.service import HotelService
 from agentic_travel.services.memory.service import MemoryService
 from agentic_travel.services.visa.service import VisaService
@@ -71,6 +73,8 @@ class Coordinator:
         weather: WeatherService,
         memory: MemoryService,
         models: ModelConfig,
+        dining: DiningService | None = None,
+        guide: GuideService | None = None,
         tracer: Tracer | None = None,
         max_repairs: int = 2,
     ) -> None:
@@ -82,7 +86,7 @@ class Coordinator:
             store=store, flights=flights, hotels=hotels, visa=visa, weather=weather, tracer=tracer
         )
         self._synthesizer = synthesizer
-        self._assembler = ItineraryAssembler(store)
+        self._assembler = ItineraryAssembler(store, dining, guide)
         self._store = store
         self._memory = memory
         self._models = models
