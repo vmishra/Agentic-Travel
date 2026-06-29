@@ -28,6 +28,15 @@ export default function RootLayout({
       data-theme="dark"
       className={`${GeistSans.variable} ${GeistMono.variable} ${display.variable}`}
     >
+      <head>
+        <script
+          // Apply the saved theme before first paint to avoid a flash.
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark'){document.documentElement.dataset.theme=t}}catch(e){}",
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

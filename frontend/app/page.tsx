@@ -34,6 +34,7 @@ export default function Page() {
   const [personaId, setPersonaId] = useState<string | null>(null);
   const [health, setHealth] = useState<Health | null>(null);
   const [architecture, setArchitecture] = useState<Architecture | null>(null);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
 
   const [messages, setMessages] = useState<Message[]>([
     { role: "system", text: "Pick a traveler, then describe the trip you want." },
@@ -59,6 +60,24 @@ export default function Page() {
     setResult(null);
     setSpans([]);
     setActiveSteps([]);
+  }, []);
+
+  useEffect(() => {
+    const current = document.documentElement.dataset.theme;
+    if (current === "light" || current === "dark") setTheme(current);
+  }, []);
+
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => {
+      const next = prev === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = next;
+      try {
+        localStorage.setItem("theme", next);
+      } catch {
+        // Ignore storage failures; the in-session theme still applies.
+      }
+      return next;
+    });
   }, []);
 
   useEffect(() => {
@@ -177,6 +196,14 @@ export default function Page() {
               {health.live_models ? "Gemini live" : "heuristic mode"}
             </span>
           )}
+          <button
+            className="themetoggle"
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+          >
+            {theme === "dark" ? "☾" : "☀"}
+          </button>
         </div>
       </header>
 

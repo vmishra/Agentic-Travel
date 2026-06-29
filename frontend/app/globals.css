@@ -16,8 +16,12 @@
   --accent-hairline: oklch(80% 0.13 85 / 0.55);
   --accent-ink: oklch(16% 0 0);
   --trace: oklch(72% 0.075 200);
+  --violet: oklch(72% 0.12 310);
   --success: oklch(74% 0.11 160);
   --danger: oklch(70% 0.14 25);
+
+  --grain-opacity: 0.03;
+  --grain-blend: overlay;
 
   --shadow-1: 0 1px 0 oklch(100% 0 0 / 0.04) inset, 0 1px 2px oklch(0% 0 0 / 0.4);
   --shadow-2: 0 1px 0 oklch(100% 0 0 / 0.06) inset, 0 8px 28px -10px oklch(0% 0 0 / 0.6);
@@ -31,6 +35,34 @@
   --r-md: 12px;
   --r-lg: 16px;
   --maxw: 880px;
+}
+
+/* ─── Light theme — warm paper, deepened champagne ─────────────────────────── */
+[data-theme="light"] {
+  --surface: oklch(96.5% 0.008 85);
+  --surface-raised: oklch(98.8% 0.005 85);
+  --elev-1: oklch(99.4% 0.003 85);
+  --elev-2: oklch(93.8% 0.011 85);
+  --border: oklch(89% 0.009 85);
+  --border-strong: oklch(80% 0.012 85);
+  --text: oklch(24% 0.012 260);
+  --text-muted: oklch(44% 0.01 260);
+  --text-subtle: oklch(56% 0.009 260);
+  --accent: oklch(55% 0.13 70);
+  --accent-soft: oklch(55% 0.13 70 / 0.12);
+  --accent-hairline: oklch(55% 0.13 70 / 0.5);
+  --accent-ink: oklch(99% 0.004 85);
+  --trace: oklch(48% 0.1 220);
+  --violet: oklch(50% 0.16 300);
+  --success: oklch(50% 0.12 160);
+  --danger: oklch(52% 0.18 25);
+
+  --grain-opacity: 0.02;
+  --grain-blend: multiply;
+
+  --shadow-1: 0 1px 2px oklch(0% 0 0 / 0.06);
+  --shadow-2: 0 8px 24px -12px oklch(0% 0 0 / 0.14);
+  --shadow-lift: 0 20px 48px -20px oklch(20% 0.02 260 / 0.18);
 }
 
 * {
@@ -103,8 +135,8 @@ button {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.03;
-  mix-blend-mode: overlay;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: var(--grain-blend);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -246,6 +278,28 @@ button {
 .pill--offline {
   color: var(--accent);
   border-color: var(--accent-hairline);
+}
+
+.themetoggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.18s, border-color 0.18s, background 0.18s;
+}
+
+.themetoggle:hover {
+  color: var(--accent);
+  border-color: var(--accent-hairline);
+  background: var(--accent-soft);
 }
 
 /* ─── Main split ─────────────────────────────────────────────────────────── */
@@ -1133,11 +1187,11 @@ button {
 }
 
 .archnode--model {
-  border-left-color: oklch(72% 0.12 310);
+  border-left-color: var(--violet);
 }
 
 .archnode--critic {
-  border-left-color: oklch(74% 0.11 160);
+  border-left-color: var(--success);
 }
 
 .archnode--selected {
@@ -1176,7 +1230,7 @@ button {
 }
 
 .archnode--critic .archnode__glyph {
-  color: oklch(74% 0.11 160);
+  color: var(--success);
 }
 
 .archnode__top {
@@ -1244,7 +1298,7 @@ button {
 }
 
 .archpanel__kind--critic {
-  color: oklch(74% 0.11 160);
+  color: var(--success);
 }
 
 .archpanel__title {
@@ -1376,7 +1430,7 @@ button {
 }
 
 .dot--model {
-  background: oklch(72% 0.12 310);
+  background: var(--violet);
 }
 
 .tracenode__name {
